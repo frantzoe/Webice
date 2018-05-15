@@ -20,7 +20,7 @@
     <br /><br /><br /><br /><br /><br />
 
 
-	<!--  
+	 
 
 	<form method = "POST" action = "Test">
 		Login : <input type="text" name="login"><br/>
@@ -28,6 +28,6 @@
 		<input type="submit" value="Submit">
 	</form>
 	
-	-->
+	
 </body>
 </html>
