@@ -44,7 +44,7 @@ public class Test_bean extends HttpServlet {
     	/** Récupération formulaire */
     	
         String nom = request.getParameter("nom");
-        
+        /*
         request.setAttribute("nom", nom);
         System.out.print(nom);
         if(!"admin".equals(nom)){
@@ -55,7 +55,7 @@ public class Test_bean extends HttpServlet {
         	this.getServletContext().getRequestDispatcher("/WEB-INF/page2.jsp").forward(request, response);
         }
         
-        	
+        	*/
     	
     	/**
         Admin admin = new Admin();
@@ -74,30 +74,29 @@ public class Test_bean extends HttpServlet {
        	
         this.getServletContext().getRequestDispatcher("/WEB-INF/bonjour.jsp").forward(request, response);
         */
-    	/*
-    	String loginA = request.getParameter("loginA");
-    	String pwdA = request.getParameter("pwdA");
-
     	
-    	RequestDispatcher dispatcher = null;
-    	
-    	if(this.login.equalsIgnoreCase(loginA) && this.pwd.equalsIgnoreCase(pwdA)){
-    		dispatcher = request.getRequestDispatcher("pannel_admin.jsp");
+    	String loginA = null;
+    	loginA = request.getParameter("login");
+    	String pwdA = null;
+    	pwdA = request.getParameter("pwd");
+    	if(loginA != null && pwdA != null) {
+	    	if(loginA.equals("admin@admin") && pwdA.equals("1234")) {
+	        	Admin admin = new Admin(loginA,pwdA);
+	        	HttpSession sessionAdmin = request.getSession();
+	        	sessionAdmin.setAttribute("admin", admin);
+	        	
+	        	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/page2.jsp");
+	        	dispatcher.forward(request, response);    		
+	    	} else {
+	    		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
+	        	dispatcher.forward(request, response);
+	    	}
     	} else {
-    		dispatcher = request.getRequestDispatcher("WEB-INF/accueil.jsp");
+    		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
+        	dispatcher.forward(request, response);
     	}
     	
-    	dispatcher.forward(request, response);
-    	*/
-    	/**
-    	Admin admin = new Admin(loginA,pwdA);
-    	HttpSession sessionAdmin = request.getSession();
-    	sessionAdmin.setAttribute("admin", admin);
-    	
-    	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
-    	dispatcher.forward(request, response);
-    	*/
-    	//this.getServletContext().getRequestDispatcher("/WEB-INF/pannel_admin.jsp").forward(request, response);
+
 
     
     }	

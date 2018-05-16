@@ -7,25 +7,22 @@
 	<title>Accueil</title>
 </head>
 <body>
+<!-- 
 	<c:if test="${ !empty nom }"><p><c:out value="Bonjour, vous vous appelez ${ nom }" /></p></c:if>
         
     <form method="post" action="Test"> <!-- nom servlet -->
-        <label for="nom">Nom : </label>
+<!--    <label for="nom">Nom : </label>
         <input type="text" name="nom" id="nom" />
             
         <input type="submit" />
     </form>
     
-    
-    <br /><br /><br /><br /><br /><br />
-
-
-	 
-
+    <br /><br />
+ -->   
 	<form method = "POST" action = "Test">
-		Login : <input type="text" name="login"><br/>
-		Password : <input type="text" name="pwd"><br/>
-		<input type="submit" value="Submit">
+		Login : <input type="text" name="login" id="login"><br/>
+		Password : <input type="text" name="pwd" id="login"><br/>
+		<input type="submit">
 	</form>
 	
 	
