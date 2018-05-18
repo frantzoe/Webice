@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<candidates xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="candidates.xsd">
+    <candidate>
+        <forename>John</forename>
+        <surname>Doe</surname>
+        <gender>Masculin</gender>
+        <birthday>1999-04-29</birthday>
+        <telephone>06 07 08 09 10</telephone>
+        <email>john.doe@mail.fr</email>
+    </candidate>
+    <candidate>
+        <forename>Jane</forename>
+        <surname>Doe</surname>
+        <gender>Féminin</gender>
+        <birthday>1996-12-04</birthday>
+        <telephone>07 08 09 10 11</telephone>
+        <email>jane.doe@mail.fr</email>
+    </candidate>
+</candidates>

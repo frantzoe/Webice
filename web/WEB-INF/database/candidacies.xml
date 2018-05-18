@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<candidacies xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="candidacies.xsd">
+    <candidacy>
+        <convention>
+            <label>Collecte &amp; Recyclage</label>
+            <detail>"Tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel."</detail>
+            <scheduled>2018-06-28</scheduled>
+            <positions>
+                <position>Responsable</position>
+                <position>Accompagnement</position>
+            </positions>
+        </convention>
+        <candidate>
+            <forename>John</forename>
+            <surname>Doe</surname>
+            <gender>Masculin</gender>
+            <birthday>1999-04-29</birthday>
+            <telephone>06 07 08 09 10</telephone>
+            <email>john.doe@mail.fr</email>
+        </candidate>
+        <positions>
+            <position>Responsable</position>
+            <position>Accompagnement</position>
+        </positions>
+        <motivation>"Podio utir enim blandit volutpat maecenas!"</motivation>
+        <validated>false</validated>
+    </candidacy>
+    <candidacy>
+        <convention>
+            <label>Environnement &amp; Nature</label>
+            <detail>"Liaculis urna id volutpat lacus laoreet non curabitur gravida arcu ac tortor."</detail>
+            <scheduled>2018-06-28</scheduled>
+            <positions>
+                <position>Responsable</position>
+                <position>Accompagnement</position>
+            </positions>
+        </convention>
+        <candidate>
+            <forename>Jane</forename>
+            <surname>Doe</surname>
+            <gender>Féminin</gender>
+            <birthday>1996-12-04</birthday>
+            <telephone>07 08 09 10 11</telephone>
+            <email>jane.doe@mail.fr</email>
+        </candidate>
+        <positions>
+            <position>Responsable</position>
+            <position>Accompagnement</position>
+        </positions>
+        <motivation>"Tincidunt ornare massa eget egestas purus!"</motivation>
+        <validated>false</validated>
+    </candidacy>
+</candidacies>

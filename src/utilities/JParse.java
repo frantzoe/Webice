@@ -10,20 +10,21 @@ import java.io.File;
 
 public class JParse {
 
-    public static <T> void marshal(Class<T> c, File f) throws JAXBException {
-        JAXBContext ctx = JAXBContext.newInstance(c.getClass());
-        Marshaller marshaller = ctx.createMarshaller();
-        marshaller.marshal(c, f);
+    public static <T> void marshal(T object, File file) throws JAXBException {
+        JAXBContext context = JAXBContext.newInstance(object.getClass());
+        Marshaller marshaller = context.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        marshaller.marshal(object, file);
     }
 
-    public static <T> T unmarshal(Class<T> c, File f) throws JAXBException {
-        return unmarshal(c, new StreamSource(f));
+    public static <T> T unmarshal(Class<T> object, File file) throws JAXBException {
+        return unmarshal(object, new StreamSource(file));
     }
 
-    public static <T> T unmarshal(Class<T> c, Source s) throws JAXBException {
-        JAXBContext ctx = JAXBContext.newInstance(c);
-        Unmarshaller unmarshaller = ctx.createUnmarshaller();
-        return unmarshaller.unmarshal(s, c).getValue();
+    private static <T> T unmarshal(Class<T> object, Source source) throws JAXBException {
+        JAXBContext context = JAXBContext.newInstance(object);
+        Unmarshaller unmarshaller = context.createUnmarshaller();
+        return unmarshaller.unmarshal(source, object).getValue();
     }
-
 }

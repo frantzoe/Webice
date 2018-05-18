@@ -1,0 +1,55 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="candidacies">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="candidacy" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="convention" maxOccurs="unbounded" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="label" />
+                                        <xs:element type="xs:string" name="detail" />
+                                        <xs:element type="xs:string" name="scheduled" />
+                                        <xs:sequence>
+                                            <xs:element name="positions">
+                                                <xs:complexType>
+                                                    <xs:sequence>
+                                                        <xs:element name="position" type="xs:string" maxOccurs="8" minOccurs="1" />
+                                                    </xs:sequence>
+                                                </xs:complexType>
+                                            </xs:element>
+                                        </xs:sequence>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="candidate" maxOccurs="unbounded" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="forename" type="xs:string" />
+                                        <xs:element name="surname" type="xs:string" />
+                                        <xs:element name="gender" type="xs:string" />
+                                        <xs:element name="birthday" type="xs:string" />
+                                        <xs:element name="telephone" type="xs:string" />
+                                        <xs:element name="email" type="xs:string" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:sequence>
+                                <xs:element name="positions">
+                                    <xs:complexType>
+                                        <xs:sequence>
+                                            <xs:element name="position" type="xs:string" maxOccurs="8" minOccurs="1" />
+                                        </xs:sequence>
+                                    </xs:complexType>
+                                </xs:element>
+                            </xs:sequence>
+                            <xs:element type="xs:string" name="motivation" />
+                            <xs:element type="xs:boolean" name="validated" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

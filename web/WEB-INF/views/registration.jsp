@@ -5,8 +5,8 @@
   Time: 2:47 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!--%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %-->
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -42,46 +42,46 @@
 
                         <div class="mdl-card__supporting-text">
 
-                            <form id="regForm"  action="#">
+                            <form id="regForm"  action="registration" method="post">
                                 <fieldset class="tab">
                                     <h3>Informations</h3>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" id="last_name" name="last_name" pattern="[A-Z,a-z, ]*" type="text">
-                                        <label class="mdl-textfield__label" for="last_name">Nom</label>
+                                        <input class="mdl-textfield__input" id="surname" name="surname" pattern="[A-Z,a-z, ]*" type="text" value="<c:out value="${candidate.surname}"/>">
+                                        <label class="mdl-textfield__label" for="surname">Nom</label>
                                         <span class="mdl-textfield__error">FieldError</span>
                                     </div>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" id="first_name" name="first_name" pattern="[A-Z,a-z, ]*" type="text">
-                                        <label class="mdl-textfield__label" for="first_name">Prénom</label>
+                                        <input class="mdl-textfield__input" id="forename" name="forename" pattern="[A-Z,a-z, ]*" type="text" value="<c:out value="${candidate.forename}"/>">
+                                        <label class="mdl-textfield__label" for="forename">Prénom</label>
                                         <span class="mdl-textfield__error">FieldError</span>
                                     </div>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" id="genre" name="genre" type="text" readonly>
-                                        <label class="mdl-textfield__label" for="genre">Genre</label>
+                                        <input class="mdl-textfield__input" id="gender" name="gender" type="text" value="<c:out value="${candidate.gender}"/>" readonly>
+                                        <label class="mdl-textfield__label" for="gender">Genre</label>
                                         <span class="mdl-textfield__error">FieldError</span>
-                                        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="genre">
+                                        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="gender">
                                             <li class="mdl-menu__item" id="female" onclick="setGenre('Féminin')">Féminin</li>
                                             <li class="mdl-menu__item" id="male" onclick="setGenre('Masculin')">Masculin</li>
                                         </ul>
                                     </div>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" id="birthday" name="birthday" type="date">
+                                        <input class="mdl-textfield__input" id="birthday" name="birthday" type="date" value="<c:out value="${candidate.birthday}"/>">
                                         <label class="mdl-textfield__label" for="birthday">Anniversaire</label>
                                         <span class="mdl-textfield__error">FieldError</span>
                                     </div>
                                     <div class="mdl-textfield mdl-js-textfield mdl mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="email">
+                                        <input class="mdl-textfield__input" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="email"  value="<c:out value="${candidate.email}"/>">
                                         <label class="mdl-textfield__label" for="email">Email</label>
                                         <span class="mdl-textfield__error">FieldError</span>
                                     </div>
                                     <div class="mdl-textfield mdl-js-textfield mdl mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" id="telephone" name="telephone" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" type="tel">
+                                        <input class="mdl-textfield__input" id="telephone" name="telephone" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" type="tel" value="<c:out value="${candidate.telephone}"/>">
                                         <label class="mdl-textfield__label" for="telephone">Telephone</label>
                                         <span class="mdl-textfield__error">FieldError</span>
                                     </div>
                                     <div class="mdl-textfield mdl-js-textfield mdl mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" id="address" name="address" pattern="[A-Z,a-z, ,0-9]*" type="text">
-                                        <label class="mdl-textfield__label" for="address">Adresse</label>
+                                        <input class="mdl-textfield__input" id="street" name="street" pattern="[A-Z,a-z, ,0-9]*" type="text">
+                                        <label class="mdl-textfield__label" for="street">Adresse</label>
                                         <span class="mdl-textfield__error">FieldError</span>
                                     </div>
                                     <div class="mdl-textfield mdl-js-textfield mdl mdl-textfield--floating-label">

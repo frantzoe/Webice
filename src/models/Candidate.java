@@ -1,54 +1,72 @@
 package models;
 
-import java.util.Date;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Objects;
 
+@XmlRootElement(name = "candidate")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Candidate {
 
-    private String firstName;
-    private String lastName;
-    private Date birthday;
-    private Address address;
-    private String phone;
+    private String forename;
+    private String surname;
+    private String gender;
+    private String birthday;
+    private String telephone;
     private String email;
 
-    public String getFirstName() {
-        return firstName;
+    public Candidate() {
+        //**
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public Candidate(String forename, String surname, String gender, String birthday, String telephone, String email) {
+        this.forename = forename;
+        this.surname = surname;
+        this.gender = gender;
+        this.birthday = birthday;
+        this.telephone = telephone;
+        this.email = email;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getForename() {
+        return forename;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setForename(String forename) {
+        this.forename = forename;
     }
 
-    public Date getBirthday() {
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
-    public Address getAddress() {
-        return address;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     public String getEmail() {
@@ -60,13 +78,31 @@ public class Candidate {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Candidate)) return false;
+        Candidate candidate = (Candidate) obj;
+        return Objects.equals(forename, candidate.forename) &&
+                Objects.equals(surname, candidate.surname) &&
+                Objects.equals(gender, candidate.gender) &&
+                Objects.equals(birthday, candidate.birthday) &&
+                Objects.equals(telephone, candidate.telephone) &&
+                Objects.equals(email, candidate.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(forename, surname, gender, birthday, telephone, email);
+    }
+
+    @Override
     public String toString() {
         return "Candidate{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", birthday=" + birthday +
-                ", address=" + address +
-                ", phone='" + phone + '\'' +
+                "forename='" + forename + '\'' +
+                ", surname='" + surname + '\'' +
+                ", gender='" + gender + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", telephone='" + telephone + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }

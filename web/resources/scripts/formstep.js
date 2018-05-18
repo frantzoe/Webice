@@ -76,20 +76,20 @@ function goBack() {
 }
 
 function setValue(u, i, n) {
-    if (u == "genre") {
+    if (u === "genre") {
         var tf = document.getElementById(u);
         tf.parentElement.MaterialTextfield.change(n);
     }
-    if (u == "choice1l") {
+    if (u === "choice1l") {
         var list = document.getElementById("choice2l");
         list.removeChild(list.childNodes[i]);
     }
-    if (u == "choice2l") {
+    if (u === "choice2l") {
         var list = document.getElementById("choice1l");
         list.removeChild(list.childNodes[i]);
     }
 }
 
 function setGenre(n) {
-    document.getElementById("genre").parentElement.MaterialTextfield.change(n);;
+    document.getElementById("gender").parentElement.MaterialTextfield.change(n);
 }

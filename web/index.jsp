@@ -5,7 +5,8 @@
   Time: 1:58 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -38,6 +39,11 @@
         <!-- Slider -->
         <div class="fly-slider invisible" data-rotation-interval="10000" data-rotation-duration="1000">
             <div class="cube">
+
+                <!--c:forEach begin="1" end="4" varStatus="loop">
+                    Index: {loop.index}<br/>
+                <c-->
+
                 <section class="slide" style="background-image: url(resources/images/slide-1.jpg);">
                     <div class="slide-content">
                         <h2 class="page-title">Tal'Asso</h2>
@@ -45,7 +51,7 @@
                         <div class="page-subtitle">Une Asso Qui Part à l'Assault</div>
 
                         <div class="volunteer-cta">
-                            <a href="registration" class="btn btn-large btn-icon js-wave">
+                            <a href="consultation" class="btn btn-large btn-icon js-wave">
                                 <i class="material-icons">arrow_forward</i>DEVENIR VOLONTAIRE AUJOURD'HUI</a>
                             <div class="note">soumission candidature requise</div>
                         </div>
@@ -58,7 +64,7 @@
                         <div class="page-subtitle">Une Asso Qui Part à l'Assault</div>
 
                         <div class="volunteer-cta">
-                            <a href="registration" class="btn btn-large btn-icon js-wave">
+                            <a href="consultation" class="btn btn-large btn-icon js-wave">
                                 <i class="material-icons">arrow_forward</i>DEVENIR VOLONTAIRE AUJOURD'HUI</a>
                             <div class="note">soumission candidature requise</div>
                         </div>
@@ -71,7 +77,7 @@
                         <div class="page-subtitle">Une Asso Qui Part à l'Assault</div>
 
                         <div class="volunteer-cta">
-                            <a href="registration" class="btn btn-large btn-icon js-wave">
+                            <a href="consultation" class="btn btn-large btn-icon js-wave">
                                 <i class="material-icons">arrow_forward</i>DEVENIR VOLONTAIRE AUJOURD'HUI</a>
                             <div class="note">soumission candidature requise</div>
                         </div>
@@ -84,13 +90,19 @@
                         <div class="page-subtitle">Une Asso Qui Part à l'Assault</div>
 
                         <div class="volunteer-cta">
-                            <a href="registration" class="btn btn-large btn-icon js-wave">
+                            <a href="consultation" class="btn btn-large btn-icon js-wave">
                                 <i class="material-icons">arrow_forward</i>DEVENIR VOLONTAIRE AUJOURD'HUI</a>
                             <div class="note">soumission candidature requise</div>
                         </div>
                     </div>
                 </section>
             </div>
+            <a class="slider-control prev js-wave" href="#">
+                <i class="material-icons">keyboard_arrow_left</i>
+            </a>
+            <a class="slider-control next js-wave" href="#">
+                <i class="material-icons">keyboard_arrow_right</i>
+            </a>
         </div>
         <!-- Libs -->
         <script src="resources/scripts/libraries/jquery-1.12.2.min.js"></script>

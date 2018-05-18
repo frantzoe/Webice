@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<recruiters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="recruiters.xsd">
+    <recruiter>
+        <forename>Emmanuel</forename>
+        <surname>Doulin</surname>
+        <email>e.doulin@mail.com</email>
+        <password>password</password>
+    </recruiter>
+    <recruiter>
+        <forename>Laborde</forename>
+        <surname>Sophie</surname>
+        <email>s.laborde@mail.com</email>
+        <password>wordpass</password>
+    </recruiter>
+</recruiters>
