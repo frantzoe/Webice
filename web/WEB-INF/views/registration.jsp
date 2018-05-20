@@ -20,43 +20,32 @@
         <link rel="stylesheet" href="../../resources/sheets/styles_signup.css">
     </head>
     <body>
-        <div class="demo-blog demo-blog--blogpost mdl-layout mdl-js-layout">
+        <div class="talasso-main talasso-main--content mdl-layout mdl-js-layout">
             <main class="mdl-layout__content">
-                <!-- TODO: Add Comment -->
-                <!--div class="demo-back">
-                  <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" onclick="goBack()" title="go back" role="button">
-                    <i class="material-icons" role="presentation">arrow_back</i>
-                  </a>
-                </div-->
-                <!-- TODO: Add Comment -->
-                <div class="portfolio-contact demo-blog__posts mdl-grid">
+                <div class="talasso-form talasso-main__content mdl-grid">
                     <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
-
                         <div class="mdl-card__media mdl-color-text--grey-50">
                             <h3>Inscription : Collecte &amp; Recyclage</h3>
                         </div>
-
                         <div class="mdl-card__supporting-text">
                             <div class="section-spacer"></div>
                         </div>
-
                         <div class="mdl-card__supporting-text">
-
-                            <form id="regForm"  action="registration" method="post">
+                            <form id="regForm" method="post" action="registration">
                                 <fieldset class="tab">
                                     <h3>Informations</h3>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" id="surname" name="surname" pattern="[A-Z,a-z, ]*" type="text" value="<c:out value="${candidate.surname}"/>">
+                                        <input class="mdl-textfield__input" id="surname" name="surname" pattern="[A-Z,a-z, ]*" type="text">
                                         <label class="mdl-textfield__label" for="surname">Nom</label>
                                         <span class="mdl-textfield__error">FieldError</span>
                                     </div>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" id="forename" name="forename" pattern="[A-Z,a-z, ]*" type="text" value="<c:out value="${candidate.forename}"/>">
+                                        <input class="mdl-textfield__input" id="forename" name="forename" pattern="[A-Z,a-z, ]*" type="text">
                                         <label class="mdl-textfield__label" for="forename">Prénom</label>
                                         <span class="mdl-textfield__error">FieldError</span>
                                     </div>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" id="gender" name="gender" type="text" value="<c:out value="${candidate.gender}"/>" readonly>
+                                        <input class="mdl-textfield__input" id="gender" name="gender" type="text" readonly>
                                         <label class="mdl-textfield__label" for="gender">Genre</label>
                                         <span class="mdl-textfield__error">FieldError</span>
                                         <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="gender">
@@ -65,17 +54,17 @@
                                         </ul>
                                     </div>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" id="birthday" name="birthday" type="date" value="<c:out value="${candidate.birthday}"/>">
+                                        <input class="mdl-textfield__input" id="birthday" name="birthday" type="date">
                                         <label class="mdl-textfield__label" for="birthday">Anniversaire</label>
                                         <span class="mdl-textfield__error">FieldError</span>
                                     </div>
                                     <div class="mdl-textfield mdl-js-textfield mdl mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="email"  value="<c:out value="${candidate.email}"/>">
+                                        <input class="mdl-textfield__input" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="email">
                                         <label class="mdl-textfield__label" for="email">Email</label>
                                         <span class="mdl-textfield__error">FieldError</span>
                                     </div>
                                     <div class="mdl-textfield mdl-js-textfield mdl mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" id="telephone" name="telephone" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" type="tel" value="<c:out value="${candidate.telephone}"/>">
+                                        <input class="mdl-textfield__input" id="telephone" name="telephone" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" type="tel">
                                         <label class="mdl-textfield__label" for="telephone">Telephone</label>
                                         <span class="mdl-textfield__error">FieldError</span>
                                     </div>
@@ -95,30 +84,11 @@
                                         <span class="mdl-textfield__error">FieldError</span>
                                     </div>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" id="choice-1" name="choice-1" type="text">
-                                        <label class="mdl-textfield__label" for="choice-1">Choix N°1</label>
-                                        <span class="mdl-textfield__error">FieldError</span>
-                                        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="choice-1" id="choice1l">
-                                            <li class="mdl-menu__item" id="c1r1" onclick="setValue('choice1l', 0, 'Féminin')">Féminin</li>
-                                            <li class="mdl-menu__item" id="c1r2" onclick="setValue('choice1l', 1, 'Masculin')">Masculin</li>
-                                        </ul>
-                                    </div>
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" id="choice-2" name="choice2" type="text">
-                                        <label class="mdl-textfield__label" for="choice-2">Choix N°2</label>
-                                        <span class="mdl-textfield__error">FieldError</span>
-                                        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="choice-2" id="choice2l">
-                                            <li class="mdl-menu__item" id="c2r1" onclick="setValue('choice2l', 0, 'Féminin')">Féminin</li>
-                                            <li class="mdl-menu__item" id="c2r2" onclick="setValue('choice2l', 1, 'Masculin')">Masculin</li>
-                                        </ul>
-                                    </div>
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                         <textarea class="mdl-textfield__input" id="motivation" name="motivation" rows="5" type="text"></textarea>
                                         <label class="mdl-textfield__label" for="motivation">Motivation</label>
                                         <span class="mdl-textfield__error">FieldError</span>
                                     </div>
                                 </fieldset>
-
                                 <fieldset class="tab">
                                     <h3>Questionnaire</h3>
                                     <h5>Une voiture vous double à toute allure et se rabat brutalement devant vous.</h5>
@@ -277,7 +247,40 @@
                                         </label>
                                     </p>
                                 </fieldset>
-                                <br><br><br>
+                                <fieldset class="tab">
+                                    <h3>Questionnaire</h3>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" id="choice" name="choice" type="text" readonly>
+                                        <label class="mdl-textfield__label" for="choice">Choix</label>
+                                        <span class="mdl-textfield__error">FieldError</span>
+                                        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="choice">
+                                            <jsp:useBean id="conventions" scope="request" type="java.util.List"/>
+                                            <c:forEach var="convention" items="${conventions}">
+                                                <li class="mdl-menu__item" onclick="setChoice('${convention.label}')">${convention.label}</li>
+                                            </c:forEach>
+                                        </ul>
+                                    </div>
+                                    <div class="sel" id="selection">
+                                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
+                                            <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input">
+                                            <span class="mdl-checkbox__label">Agent d'Accueil Invités</span>
+                                        </label>
+                                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
+                                            <input type="checkbox" id="checkbox-2" class="mdl-checkbox__input">
+                                            <span class="mdl-checkbox__label">Responsable Sureté et Sécurité</span>
+                                        </label>
+                                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-3">
+                                            <input type="checkbox" id="checkbox-3" class="mdl-checkbox__input">
+                                            <span class="mdl-checkbox__label">Organisateur / Organisatrice d'Événements</span>
+                                        </label>
+                                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-4">
+                                            <input type="checkbox" id="checkbox-4" class="mdl-checkbox__input">
+                                            <span class="mdl-checkbox__label">Animateur / Animatrice de Salle</span>
+                                        </label>
+                                    </div>
+                                    <div style="margin-bottom: 256px;"></div>
+                                </fieldset>
+
                                 <div style="overflow:auto;">
                                     <div style="float: right;">
                                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="prevBtn" onclick="nextPrev(-1)" type="button">
@@ -291,15 +294,13 @@
                                 <div style="text-align:center;margin-top:40px;">
                                     <span class="step"></span>
                                     <span class="step"></span>
+                                    <span class="step"></span>
                                 </div>
                                 <br><br><br>
                             </form>
                         </div>
                     </div>
                 </div>
-
-                <br><br><br>
-
             </main>
             <div class="mdl-layout__obfuscator"></div>
         </div>

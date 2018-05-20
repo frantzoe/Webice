@@ -5,6 +5,8 @@
             <label>Collecte &amp; Recyclage</label>
             <detail>"Tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel."</detail>
             <scheduled>2018-06-28</scheduled>
+            <place>Lormont</place>
+            <image>example-event04.jpg</image>
             <positions>
                 <position>Responsable</position>
                 <position>Accompagnement</position>
@@ -17,6 +19,7 @@
             <birthday>1999-04-29</birthday>
             <telephone>06 07 08 09 10</telephone>
             <email>john.doe@mail.fr</email>
+            <personality>Dominant</personality>
         </candidate>
         <positions>
             <position>Responsable</position>
@@ -27,9 +30,11 @@
     </candidacy>
     <candidacy>
         <convention>
-            <label>Environnement &amp; Nature</label>
+            <label>Climat &amp; Nature</label>
             <detail>"Liaculis urna id volutpat lacus laoreet non curabitur gravida arcu ac tortor."</detail>
             <scheduled>2018-06-28</scheduled>
+            <place>Bordeaux</place>
+            <image>example-event06.jpg</image>
             <positions>
                 <position>Responsable</position>
                 <position>Accompagnement</position>
@@ -42,6 +47,7 @@
             <birthday>1996-12-04</birthday>
             <telephone>07 08 09 10 11</telephone>
             <email>jane.doe@mail.fr</email>
+            <personality>Stable</personality>
         </candidate>
         <positions>
             <position>Responsable</position>

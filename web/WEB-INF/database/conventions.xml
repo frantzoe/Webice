@@ -2,19 +2,87 @@
 <conventions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="conventions.xsd">
     <convention>
         <label>Collecte &amp; Recyclage</label>
-        <detail>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Egestas congue quisque egestas diam in arcu. Dolor sit amet consectetur adipiscing elit pellentesque habitant. Non odio euismod lacinia at. Nec feugiat in fermentum posuere."</detail>
+        <detail>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Egestas congue quisque egestas diam in arcu. Dolor sit amet consectetur adipiscing elit pellentesque habitant. Non odio euismod lacinia at. Nec feugiat in fermentum posuere.</detail>
         <scheduled>2018-06-28</scheduled>
-        <place>Paris</place>
+        <place>Lormont</place>
+        <image>example-event04.jpg</image>
         <positions>
             <position>Responsable</position>
             <position>Accompagnement</position>
         </positions>
     </convention>
     <convention>
-        <label>Environnement &amp; Nature</label>
-        <detail>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Semper risus in hendrerit gravida rutrum quisque non tellus orci. Curabitur vitae nunc sed velit. Lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt. Erat nam at lectus urna duis."</detail>
+        <label>Climat &amp; Nature</label>
+        <detail>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed sed risus porro quisquam est qui pretium quam vulputate dignissim suspendisse in. Tincidunt nunc pulvinar sapien et. Vel turpis nunc eget lorem dolor sed.</detail>
         <scheduled>2018-08-12</scheduled>
         <place>Bordeaux</place>
+        <image>example-event06.jpg</image>
+        <positions>
+            <position>Responsable</position>
+            <position>Accompagnement</position>
+        </positions>
+    </convention>
+    <convention>
+        <label>Solidarité &amp; Générosité</label>
+        <detail>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus purus in massa tempor nec feugiat nisl pretium fusce. Nunc eget lorem dolor sed viverra. Vitae congue mauris rhoncus aenean vel elit scelerisque mauris.</detail>
+        <scheduled>2018-10-21</scheduled>
+        <place>Talence</place>
+        <image>example-event03.jpg</image>
+        <positions>
+            <position>Responsable</position>
+            <position>Accompagnement</position>
+        </positions>
+    </convention>
+    <convention>
+        <label>Zénitude &amp; Méditation</label>
+        <detail>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ornare quam viverra orci sagittis eu volutpat odio facilisis mauris. Vitae et leo duis ut diam quam nulla. Consequat mauris nunc congue nisi vitae suscipit tellus mauris.</detail>
+        <scheduled>2018-12-08</scheduled>
+        <place>Pessac</place>
+        <image>example-event02.jpg</image>
+        <positions>
+            <position>Responsable</position>
+            <position>Accompagnement</position>
+        </positions>
+    </convention>
+    <convention>
+        <label>Vancances &amp; Voyages</label>
+        <detail>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Laoreet non curabitur gravida arcu. Quis enim lobortis scelerisque fermentum dui faucibus in. Aliquam etiam erat velit scelerisque in dictum non consectetur.</detail>
+        <scheduled>2019-01-30</scheduled>
+        <place>Mérignac</place>
+        <image>example-event08.jpg</image>
+        <positions>
+            <position>Responsable</position>
+            <position>Accompagnement</position>
+        </positions>
+    </convention>
+    <convention>
+        <label>Emploi &amp; Education</label>
+        <detail>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dapibus ultrices in iaculis nunc aliquip commodo consequat sed augue lacus viverra. Lacus vestibulum sed arcu non odio euismod. Sit amet tellus cras adipiscing enim eu.</detail>
+        <scheduled>2018-03-26</scheduled>
+        <place>Bègles</place>
+        <image>example-event09.jpg</image>
+        <positions>
+            <position>Responsable</position>
+            <position>Accompagnement</position>
+        </positions>
+    </convention>
+    <convention>
+        <label>Intérieur &amp; Design</label>
+        <detail>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod sapien nec sagittis aliquam tempor incididunt ut labore et dolore magna aliqua. Ut aliquam purus sit amet luctus venenatis. Tempor id eu nisl nunc mi ipsum faucibus vitae aliquet. Dolor sed viverra ipsum nunc aliquet bibendum enim facilisis.</detail>
+        <scheduled>2018-05-19</scheduled>
+        <place>Bègles</place>
+        <image>example-event05.jpg</image>
+        <positions>
+            <position>Responsable</position>
+            <position>Accompagnement</position>
+        </positions>
+    </convention>
+    <convention>
+        <label>Technologie &amp; Finance</label>
+        <detail>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Cursus vitae congue mauris rhoncus aenean vel elit scelerisque. Ornare aenean euismod elementum nisi quis eleifend quam. Sociis natoque penatibus et magnis dis parturient montes nascetur.</detail>
+        <scheduled>2018-07-08</scheduled>
+        <place>Bègles</place>
+        <image>example-event07.jpg</image>
         <positions>
             <position>Responsable</position>
             <position>Accompagnement</position>

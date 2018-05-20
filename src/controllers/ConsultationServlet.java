@@ -22,7 +22,7 @@ public class ConsultationServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("Hey There Boi");
+        System.out.println("Hey There Boi : Consultation");
         Conventions conventions = null;
         try {
             //**
@@ -36,7 +36,7 @@ public class ConsultationServlet extends HttpServlet {
 
         System.out.println(conventions);
 
-        request.setAttribute("conventions", conventions.getConventions());
+        request.setAttribute("conventions", conventions != null ? conventions.getConventions() : null);
 
         getServletContext().getRequestDispatcher(PAGE).forward(request, response);
     }

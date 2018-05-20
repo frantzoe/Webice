@@ -9,6 +9,7 @@
                             <xs:element type="xs:string" name="detail" />
                             <xs:element type="xs:string" name="scheduled" />
                             <xs:element type="xs:string" name="place" />
+                            <xs:element type="xs:string" name="image" />
                             <xs:sequence>
                                 <xs:element name="positions">
                                     <xs:complexType>

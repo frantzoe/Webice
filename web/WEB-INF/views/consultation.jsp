@@ -12,7 +12,7 @@
     <head>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Consultation | Tal'Asso</title>
+        <title>Événement | Tal'Asso</title>
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=fr">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -20,55 +20,29 @@
         <link rel="stylesheet" href="../../resources/sheets/styles_signup.css">
     </head>
     <body>
-        <div class="demo-blog mdl-layout mdl-js-layout has-drawer is-upgraded">
+        <div class="talasso-main mdl-layout mdl-js-layout">
             <main class="mdl-layout__content">
-                <div class="demo-blog__posts mdl-grid">
-
+                <div class="talasso-main__content mdl-grid talasso-max-width">
                     <jsp:useBean id="conventions" scope="request" type="java.util.List"/>
                     <c:forEach var="convention" items="${conventions}">
-                        <div class="mdl-card on-the-road-again mdl-cell mdl-cell--12-col">
-                            <div class="mdl-card__media mdl-color-text--grey-50">
-                                <h3><a href="entry.html">${convention.label}</a></h3>
+                        <div class="mdl-cell mdl-card mdl-shadow--4dp talasso-card">
+                            <div class="mdl-card__media">
+                                <img class="content-image" src="../../resources/images/${convention.image}" border="0" alt="">
                             </div>
-                            <div class="mdl-color-text--grey-600 mdl-card__supporting-text">
+                            <div class="mdl-card__title">
+                                <h2 class="mdl-card__title-text">${convention.label}</h2>
+                            </div>
+                            <div class="mdl-card__supporting-text">
                                 ${convention.detail}
                             </div>
-                            <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-                                <div class="minilogo"></div>
-                                <div>
-                                    <strong>${convention.place}</strong>
-                                    <span>${convention.scheduled}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mdl-card shopping mdl-cell mdl-cell--12-col">
-                            <div class="mdl-card__media mdl-color-text--grey-50">
-                                <h3><a href="entry.html">${convention.label}</a></h3>
-                            </div>
-                            <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-                                ${convention.detail}
-                            </div>
-                            <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-                                <div class="minilogo"></div>
-                                <div>
-                                    <strong>${convention.place}</strong>
-                                    <span>${convention.scheduled}</span>
-                                </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent" href="#">Détails</a>
                             </div>
                         </div>
                     </c:forEach>
-
-                    <!--nav class="demo-nav mdl-cell mdl-cell--12-col">
-                        <div class="section-spacer"></div>
-                        <a href="entry.html" class="demo-nav__button" title="show more">
-                            More
-                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                                <i class="material-icons" role="presentation">arrow_forward</i>
-                            </button>
-                        </a>
-                    </nav-->
                 </div>
-                <footer class="mdl-mini-footer">
+
+                <!--footer class="mdl-mini-footer">
                     <div class="mdl-mini-footer--left-section">
                         <button class="mdl-mini-footer--social-btn social-btn social-btn__twitter">
                             <span class="visuallyhidden">Twitter</span>
@@ -86,7 +60,8 @@
                             <span class="visuallyhidden">share</span>
                         </button>
                     </div>
-                </footer>
+                </footer-->
+
             </main>
             <div class="mdl-layout__obfuscator"></div>
         </div>

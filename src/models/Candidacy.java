@@ -88,7 +88,7 @@ public class Candidacy {
     @Override
     public String toString() {
         return "Candidacy{" +
-                ", convention=" + convention +
+                "convention=" + convention +
                 ", candidate=" + candidate +
                 ", positions=" + positions +
                 ", motivation='" + motivation + '\'' +

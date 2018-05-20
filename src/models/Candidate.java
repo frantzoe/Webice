@@ -15,18 +15,20 @@ public class Candidate {
     private String birthday;
     private String telephone;
     private String email;
+    private String personality;
 
     public Candidate() {
         //**
     }
 
-    public Candidate(String forename, String surname, String gender, String birthday, String telephone, String email) {
+    public Candidate(String forename, String surname, String gender, String birthday, String telephone, String email, String personality) {
         this.forename = forename;
         this.surname = surname;
         this.gender = gender;
         this.birthday = birthday;
         this.telephone = telephone;
         this.email = email;
+        this.personality = personality;
     }
 
     public String getForename() {
@@ -77,6 +79,14 @@ public class Candidate {
         this.email = email;
     }
 
+    public String getPersonality() {
+        return personality;
+    }
+
+    public void setPersonality(String personality) {
+        this.personality = personality;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -87,7 +97,8 @@ public class Candidate {
                 Objects.equals(gender, candidate.gender) &&
                 Objects.equals(birthday, candidate.birthday) &&
                 Objects.equals(telephone, candidate.telephone) &&
-                Objects.equals(email, candidate.email);
+                Objects.equals(email, candidate.email) &&
+                Objects.equals(personality, candidate.personality);
     }
 
     @Override
@@ -104,6 +115,7 @@ public class Candidate {
                 ", birthday='" + birthday + '\'' +
                 ", telephone='" + telephone + '\'' +
                 ", email='" + email + '\'' +
+                ", personality='" + personality + '\'' +
                 '}';
     }
 }

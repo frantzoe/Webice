@@ -28,6 +28,15 @@ public class Conventions {
         conventions.add(convention);
     }
 
+    public Convention getConventionByLabel(String label) {
+        for (Convention convention : conventions) {
+            if (convention.getLabel().equals(label)) {
+                return convention;
+            }
+        }
+        return null;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
