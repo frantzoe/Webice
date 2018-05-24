@@ -1,0 +1,14 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="candidate" type="candidate"/>
+    <xs:complexType name="candidate">
+        <xs:sequence>
+            <xs:element name="forename" type="xs:string" />
+            <xs:element name="surname" type="xs:string" />
+            <xs:element name="gender" type="xs:string" />
+            <xs:element name="birthday" type="xs:string" />
+            <xs:element name="telephone" type="xs:string" />
+            <xs:element name="email" type="xs:string" />
+            <xs:element name="personality" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

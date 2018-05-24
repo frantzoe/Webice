@@ -1,9 +1,9 @@
 package controllers;
 
 import applications.RegistrationForm;
+import collections.Conventions;
 import models.Candidacy;
 import models.Convention;
-import services.Conventions;
 import utilities.JParse;
 
 import javax.servlet.ServletException;
@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@WebServlet("/registration")
+@WebServlet(urlPatterns = "/registration")
 public class RegistrationServlet extends HttpServlet {
 
     /* ********** Logging ********** */
@@ -46,7 +46,7 @@ public class RegistrationServlet extends HttpServlet {
             conventions = JParse.unmarshal(Conventions.class, file);
         } catch (Exception e) {e.printStackTrace();}
 
-        request.setAttribute("conventions", conventions.getConventions());
+        request.setAttribute("conventions", conventions.getConvention());
         getServletContext().getRequestDispatcher(PAGE).forward(request, response);
     }
 
@@ -56,7 +56,7 @@ public class RegistrationServlet extends HttpServlet {
 
         final String label = request.getParameter("choice");
         final RegistrationForm form = new RegistrationForm();
-        final Convention convention = conventions.getConventionByLabel(label);
+        final Convention convention = conventions.getConvention(label);
         final Candidacy candidacy = form.register(convention, PATH_CANDIDACIES, request);
 
         LOGGER.log(Level.INFO, candidacy.toString());

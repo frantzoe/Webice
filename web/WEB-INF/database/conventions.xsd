@@ -1,27 +1,9 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:include schemaLocation="convention.xsd" />
     <xs:element name="conventions">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="convention" maxOccurs="unbounded" minOccurs="0">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element type="xs:string" name="label" />
-                            <xs:element type="xs:string" name="detail" />
-                            <xs:element type="xs:string" name="scheduled" />
-                            <xs:element type="xs:string" name="place" />
-                            <xs:element type="xs:string" name="image" />
-                            <xs:sequence>
-                                <xs:element name="positions">
-                                    <xs:complexType>
-                                        <xs:sequence>
-                                            <xs:element name="position" type="xs:string" maxOccurs="8" minOccurs="1" />
-                                        </xs:sequence>
-                                    </xs:complexType>
-                                </xs:element>
-                            </xs:sequence>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
+                <xs:element name="convention" minOccurs="0" maxOccurs="unbounded" type="convention" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>

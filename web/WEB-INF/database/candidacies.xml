@@ -21,10 +21,8 @@
             <email>john.doe@mail.fr</email>
             <personality>Dominant</personality>
         </candidate>
-        <positions>
-            <position>Responsable</position>
-            <position>Accompagnement</position>
-        </positions>
+        <choiceOne>Responsable</choiceOne>
+        <choiceTwo>Accompagnement</choiceTwo>
         <motivation>"Podio utir enim blandit volutpat maecenas!"</motivation>
         <validated>false</validated>
     </candidacy>
@@ -49,10 +47,8 @@
             <email>jane.doe@mail.fr</email>
             <personality>Stable</personality>
         </candidate>
-        <positions>
-            <position>Responsable</position>
-            <position>Accompagnement</position>
-        </positions>
+        <choiceOne>Responsable</choiceOne>
+        <choiceTwo>Accompagnement</choiceTwo>
         <motivation>"Tincidunt ornare massa eget egestas purus!"</motivation>
         <validated>false</validated>
     </candidacy>

@@ -1,9 +1,9 @@
 package applications;
 
+import collections.Candidacies;
 import models.Candidacy;
 import models.Candidate;
 import models.Convention;
-import services.Candidacies;
 import utilities.JParse;
 import utilities.Utils;
 

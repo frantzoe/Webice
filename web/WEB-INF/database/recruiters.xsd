@@ -1,17 +1,9 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:include schemaLocation="recruiter.xsd" />
     <xs:element name="recruiters">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="recruiter" maxOccurs="unbounded" minOccurs="1">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="forename" type="xs:string" />
-                            <xs:element name="surname" type="xs:string" />
-                            <xs:element name="email" type="xs:string" />
-                            <xs:element name="password" type="xs:string" />
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
+                <xs:element name="recruiter" maxOccurs="unbounded" type="recruiter" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>

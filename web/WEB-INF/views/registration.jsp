@@ -16,8 +16,8 @@
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=fr">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="../../resources/material/sheets/material.grey-orange.min.css">
-        <link rel="stylesheet" href="../../resources/sheets/styles_signup.css">
+        <link rel="stylesheet" href="resources/material/sheets/material.grey-orange.min.css">
+        <link rel="stylesheet" href="resources/sheets/styles_signup.css">
     </head>
     <body>
         <div class="talasso-main talasso-main--content mdl-layout mdl-js-layout">
@@ -304,7 +304,7 @@
             </main>
             <div class="mdl-layout__obfuscator"></div>
         </div>
-        <script src="../../resources/material/scripts/material.min.js"></script>
-        <script src="../../resources/scripts/formstep.js"></script>
+        <script src="resources/material/scripts/material.min.js"></script>
+        <script src="resources/scripts/formstep.js"></script>
     </body>
 </html>

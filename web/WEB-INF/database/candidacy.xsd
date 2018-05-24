@@ -1,0 +1,15 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:include schemaLocation="candidate.xsd" />
+    <xs:include schemaLocation="convention.xsd" />
+    <xs:element name="candidacy" type="candidacy" />
+    <xs:complexType name="candidacy">
+        <xs:sequence>
+            <xs:element name="convention" type="convention" />
+            <xs:element name="candidate" type="candidate" />
+            <xs:element name="choiceOne" type="xs:string" />
+            <xs:element name="choiceTwo" type="xs:string" />
+            <xs:element name="motivation" type="xs:string" />
+            <xs:element name="validated" type="xs:boolean" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
