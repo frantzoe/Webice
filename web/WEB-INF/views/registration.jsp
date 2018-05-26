@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=fr">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="resources/material/sheets/material.grey-orange.min.css">
-        <link rel="stylesheet" href="resources/sheets/styles_signup.css">
+        <link rel="stylesheet" href="../../resources/sheets/styles_main.css">
     </head>
     <body>
         <div class="talasso-main talasso-main--content mdl-layout mdl-js-layout">
@@ -25,7 +25,7 @@
                 <div class="talasso-form talasso-main__content mdl-grid">
                     <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
                         <div class="mdl-card__media mdl-color-text--grey-50">
-                            <h3>Inscription : Collecte &amp; Recyclage</h3>
+                            <h3>Inscription Événement Tal'Asso</h3>
                         </div>
                         <div class="mdl-card__supporting-text">
                             <div class="section-spacer"></div>

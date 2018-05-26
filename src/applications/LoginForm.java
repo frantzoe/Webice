@@ -17,7 +17,7 @@ public class LoginForm {
     /* ********** Declaring Candidacy Variables ********** */
     private static final String USER_MAIL = "email";
     private static final String USER_PASS = "password";
-    private static final String PATH_RECRUITERS = "/WEB-INF/database/recruiter.xml";
+    private static final String PATH_RECRUITERS = "/WEB-INF/database/recruiters.xml";
 
     public Recruiter login(HttpServletRequest request) {
 
@@ -32,13 +32,15 @@ public class LoginForm {
         try {
             File file = new File(request.getServletContext().getRealPath(PATH_RECRUITERS));
             Recruiters recruiters = JParse.unmarshal(Recruiters.class, file);
-            for (Recruiter r : recruiters.getRecruiter()) {
-                if (r.getEmail().equals(username) && r.getPassword().equals(password)) {
-                    recruiter = r;
+            for (Recruiter rec : recruiters.getRecruiter()) {
+                if (rec.getEmail().equals(username) && rec.getPassword().equals(password)) {
+                    recruiter = rec;
                     LOGGER.log(Level.INFO, recruiter.toString());
                 }
             }
-        } catch (Exception e) {e.printStackTrace();}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return recruiter;
     }

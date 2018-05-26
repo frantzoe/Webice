@@ -6,6 +6,7 @@ package models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -179,6 +180,35 @@ public class Convention {
         this.positions = value;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Convention)) return false;
+        Convention that = (Convention) o;
+        return Objects.equals(label, that.label) &&
+                Objects.equals(detail, that.detail) &&
+                Objects.equals(scheduled, that.scheduled) &&
+                Objects.equals(place, that.place) &&
+                Objects.equals(image, that.image) &&
+                Objects.equals(positions, that.positions);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(label, detail, scheduled, place, image, positions);
+    }
+
+    @Override
+    public String toString() {
+        return "Convention{" +
+                "label='" + label + '\'' +
+                ", detail='" + detail + '\'' +
+                ", scheduled=" + scheduled +
+                ", place='" + place + '\'' +
+                ", image='" + image + '\'' +
+                ", positions=" + positions +
+                '}';
+    }
 
     /**
      * <p>Java class for Positions complex type.
@@ -219,6 +249,24 @@ public class Convention {
             return this.position;
         }
 
-    }
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof Positions)) return false;
+            Positions positions = (Positions) o;
+            return Objects.equals(position, positions.position);
+        }
 
+        @Override
+        public int hashCode() {
+            return Objects.hash(position);
+        }
+
+        @Override
+        public String toString() {
+            return "Positions{" +
+                    "position=" + position +
+                    '}';
+        }
+    }
 }

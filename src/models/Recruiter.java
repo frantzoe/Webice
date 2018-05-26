@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.Objects;
 
 
 /**
@@ -122,4 +123,28 @@ public class Recruiter {
         this.password = value;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Recruiter)) return false;
+        Recruiter recruiter = (Recruiter) o;
+        return Objects.equals(forename, recruiter.forename) &&
+                Objects.equals(surname, recruiter.surname) &&
+                Objects.equals(email, recruiter.email) &&
+                Objects.equals(password, recruiter.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(forename, surname, email, password);
+    }
+
+    @Override
+    public String toString() {
+        return "Recruiter{" +
+                "forename='" + forename + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

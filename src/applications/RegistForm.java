@@ -12,10 +12,10 @@ import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class RegistrationForm {
+public class RegistForm {
 
     /* ********** Logging ********** */
-    private static final Logger LOGGER = Logger.getLogger(RegistrationForm.class.getCanonicalName());
+    private static final Logger LOGGER = Logger.getLogger(RegistForm.class.getCanonicalName());
 
     /* ********** Declaring Candidacy Variables ********** */
     private static final String USER_FNAME = "surname";

@@ -1,6 +1,6 @@
 package controllers;
 
-import applications.RegistrationForm;
+import applications.RegistForm;
 import collections.Conventions;
 import models.Candidacy;
 import models.Convention;
@@ -17,10 +17,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @WebServlet(urlPatterns = "/registration")
-public class RegistrationServlet extends HttpServlet {
+public class RegistServlet extends HttpServlet {
 
     /* ********** Logging ********** */
-    private static final Logger LOGGER = Logger.getLogger(RegistrationServlet.class.getCanonicalName());
+    private static final Logger LOGGER = Logger.getLogger(RegistServlet.class.getCanonicalName());
 
     //**
     private static final String PAGE = "/WEB-INF/views/registration.jsp";
@@ -55,7 +55,7 @@ public class RegistrationServlet extends HttpServlet {
         LOGGER.log(Level.INFO, "Executed");
 
         final String label = request.getParameter("choice");
-        final RegistrationForm form = new RegistrationForm();
+        final RegistForm form = new RegistForm();
         final Convention convention = conventions.getConvention(label);
         final Candidacy candidacy = form.register(convention, PATH_CANDIDACIES, request);
 

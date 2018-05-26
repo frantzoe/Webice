@@ -8,6 +8,7 @@ import models.Recruiter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -55,4 +56,24 @@ public class Recruiters {
         return this.recruiter;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Recruiters)) return false;
+        Recruiters that = (Recruiters) o;
+        return Objects.equals(recruiter, that.recruiter);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(recruiter);
+    }
+
+    @Override
+    public String toString() {
+        return "Recruiters{" +
+                "recruiter=" + recruiter +
+                '}';
+    }
 }

@@ -12,7 +12,7 @@ import java.io.File;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/consultation")
-public class ConsultationServlet extends HttpServlet {
+public class ConsultServlet extends HttpServlet {
 
     //**
     private static final String PAGE = "/WEB-INF/views/consultation.jsp";

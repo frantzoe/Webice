@@ -8,6 +8,7 @@ import models.Candidate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -53,4 +54,24 @@ public class Candidates {
         return this.candidate;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Candidates)) return false;
+        Candidates that = (Candidates) o;
+        return Objects.equals(candidate, that.candidate);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(candidate);
+    }
+
+    @Override
+    public String toString() {
+        return "Candidates{" +
+                "candidate=" + candidate +
+                '}';
+    }
 }

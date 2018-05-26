@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.Objects;
 
 
 /**
@@ -200,4 +201,35 @@ public class Candidate {
         this.personality = value;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Candidate)) return false;
+        Candidate candidate = (Candidate) o;
+        return Objects.equals(forename, candidate.forename) &&
+                Objects.equals(surname, candidate.surname) &&
+                Objects.equals(gender, candidate.gender) &&
+                Objects.equals(birthday, candidate.birthday) &&
+                Objects.equals(telephone, candidate.telephone) &&
+                Objects.equals(email, candidate.email) &&
+                Objects.equals(personality, candidate.personality);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(forename, surname, gender, birthday, telephone, email, personality);
+    }
+
+    @Override
+    public String toString() {
+        return "Candidate{" +
+                "forename='" + forename + '\'' +
+                ", surname='" + surname + '\'' +
+                ", gender='" + gender + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", email='" + email + '\'' +
+                ", personality='" + personality + '\'' +
+                '}';
+    }
 }

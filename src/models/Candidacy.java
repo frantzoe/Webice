@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.Objects;
 
 
 /**
@@ -165,4 +166,33 @@ public class Candidacy {
         this.validated = value;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Candidacy)) return false;
+        Candidacy candidacy = (Candidacy) o;
+        return Objects.equals(convention, candidacy.convention) &&
+                Objects.equals(candidate, candidacy.candidate) &&
+                Objects.equals(choiceOne, candidacy.choiceOne) &&
+                Objects.equals(choiceTwo, candidacy.choiceTwo) &&
+                Objects.equals(motivation, candidacy.motivation) &&
+                Objects.equals(validated, candidacy.validated);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(convention, candidate, choiceOne, choiceTwo, motivation, validated);
+    }
+
+    @Override
+    public String toString() {
+        return "Candidacy{" +
+                "convention=" + convention +
+                ", candidate=" + candidate +
+                ", choiceOne='" + choiceOne + '\'' +
+                ", choiceTwo='" + choiceTwo + '\'' +
+                ", motivation='" + motivation + '\'' +
+                ", validated=" + validated +
+                '}';
+    }
 }

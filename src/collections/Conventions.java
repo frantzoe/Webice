@@ -8,6 +8,7 @@ import models.Convention;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -66,4 +67,24 @@ public class Conventions {
         this.convention.add(convention);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Conventions)) return false;
+        Conventions that = (Conventions) o;
+        return Objects.equals(convention, that.convention);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(convention);
+    }
+
+    @Override
+    public String toString() {
+        return "Conventions{" +
+                "convention=" + convention +
+                '}';
+    }
 }

@@ -170,12 +170,9 @@ body .talasso-main {
 .talasso-main .minilogo {
     width: 44px;
     height: 44px;
-    background-image: url('../../resources/images/avatar.png');
-    background-position: center;
-    background-repeat: no-repeat;
     background-size: 50%;
     border-radius: 22px;
-    background-color: #F5F5F5;
+    background: #F5F5F5 url('../../resources/images/avatar.png') no-repeat center;
 }
 
 .talasso-max-width {

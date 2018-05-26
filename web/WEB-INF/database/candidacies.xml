@@ -3,7 +3,7 @@
     <candidacy>
         <convention>
             <label>Collecte &amp; Recyclage</label>
-            <detail>"Tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel."</detail>
+            <detail>Tellus in metus vulputate scelerisque felis imperdiet proin fermentum leo vel.</detail>
             <scheduled>2018-06-28</scheduled>
             <place>Lormont</place>
             <image>example-event04.jpg</image>
@@ -23,13 +23,13 @@
         </candidate>
         <choiceOne>Responsable</choiceOne>
         <choiceTwo>Accompagnement</choiceTwo>
-        <motivation>"Podio utir enim blandit volutpat maecenas!"</motivation>
+        <motivation>Podio utir enim scelerisque felis imperdiet proin blandit volutpat maecenas!</motivation>
         <validated>false</validated>
     </candidacy>
     <candidacy>
         <convention>
             <label>Climat &amp; Nature</label>
-            <detail>"Liaculis urna id volutpat lacus laoreet non curabitur gravida arcu ac tortor."</detail>
+            <detail>Liaculis urna id volutpat lacus laoreet non curabitur gravida arcu ac tortor.</detail>
             <scheduled>2018-06-28</scheduled>
             <place>Bordeaux</place>
             <image>example-event06.jpg</image>
@@ -49,7 +49,7 @@
         </candidate>
         <choiceOne>Responsable</choiceOne>
         <choiceTwo>Accompagnement</choiceTwo>
-        <motivation>"Tincidunt ornare massa eget egestas purus!"</motivation>
+        <motivation>Tincidunt id ornare massa eget egestas lacus laoreet non curabitur purus!</motivation>
         <validated>false</validated>
     </candidacy>
 </candidacies>

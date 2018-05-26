@@ -5,9 +5,13 @@
 package collections;
 
 import models.Candidacy;
+import utilities.JParse;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -57,4 +61,23 @@ public class Candidacies {
         this.candidacy.add(candidacy);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Candidacies)) return false;
+        Candidacies that = (Candidacies) o;
+        return Objects.equals(candidacy, that.candidacy);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(candidacy);
+    }
+
+    @Override
+    public String toString() {
+        return "Candidacies{" +
+                "candidacy=" + candidacy +
+                '}';
+    }
 }
