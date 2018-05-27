@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=fr">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="resources/material/sheets/material.grey-orange.min.css">
-        <link rel="stylesheet" href="../../resources/sheets/styles_main.css">
+        <link rel="stylesheet" href="resources/sheets/styles_main.css">
     </head>
     <body>
         <div class="talasso-main talasso-main--content mdl-layout mdl-js-layout">

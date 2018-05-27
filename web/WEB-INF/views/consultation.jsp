@@ -52,7 +52,7 @@
                             </div>
                             <div class="mdl-card__actions mdl-card--border">
                                 <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--accent">
-                                    <i class="material-icons ">event</i>
+                                    <i class="material-icons ">schedule</i>
                                     ${convention.scheduled} à ${convention.place}
                                 </a>
                             </div>
