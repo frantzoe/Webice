@@ -23,8 +23,7 @@ html, body {
   height: 64px;
 }
 .talasso-admin .mdl-layout__tab-bar {
-  padding: 0;
-  padding-left: 16px;
+  padding: 0 0 0 16px;
   box-sizing: border-box;
   height: 100%;
   width: 100%;
@@ -89,9 +88,10 @@ html, body {
 }
 .talasso-admin #add {
   position: absolute;
-  right: 40px;
-  top: 36px;
-  z-index: 999;
+  right: 0;
+  top: 0;
+  margin-right: 40px;
+  margin-top: 40px;
 }
 
 .talasso-admin .mdl-layout__content section:not(:last-of-type) {
@@ -114,6 +114,7 @@ html, body {
 }
 .talasso-admin section > .section__play-btn {
   min-height: 200px;
+  background: no-repeat;
 }
 .talasso-admin section > header > .material-icons {
   font-size: 3rem;
@@ -152,8 +153,7 @@ html, body {
 }
 .talasso-admin section .section__text h5 {
   font-size: inherit;
-  margin: 0;
-  margin-bottom: 0.5em;
+  margin: 0 0 0.5em;
 }
 .talasso-admin section .section__text a {
   text-decoration: none;
@@ -163,6 +163,16 @@ html, body {
   height: 64px;
   border-radius: 32px;
   margin: 8px 0;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.talasso-admin section .section__circle-container > .section__circle-container__circle > .elicon {
+  line-height: 64px;
 }
 .talasso-admin section.section--footer .section__circle--big {
   width: 100px;
@@ -222,4 +232,49 @@ html, body {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+.mdl-dialog {
+  border: none;
+  box-shadow: 0 9px 46px 8px rgba(0, 0, 0, 0.14), 0 11px 15px -7px rgba(0, 0, 0, 0.12), 0 24px 38px 3px rgba(0, 0, 0, 0.2);
+  width: 280px;
+}
+.mdl-dialog__title {
+  padding: 24px 24px 0;
+  margin: 0;
+  font-size: 2.5rem;
+}
+.mdl-dialog__actions {
+  padding: 8px 8px 8px 24px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.mdl-dialog__actions > * {
+  margin-right: 8px;
+  height: 36px;
+}
+.mdl-dialog__actions > *:first-child {
+  margin-right: 0;
+}
+.mdl-dialog__actions--full-width {
+  padding: 0 0 8px 0;
+}
+.mdl-dialog__actions--full-width > * {
+  height: 48px;
+  -webkit-flex: 0 0 100%;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  padding-right: 16px;
+  margin-right: 0;
+  text-align: right;
+}
+.mdl-dialog__content {
+  padding: 20px 24px 24px 24px;
+  color: rgba(0,0,0, 0.54);
 }
