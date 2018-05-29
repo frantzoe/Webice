@@ -8,8 +8,9 @@
             <place>Lormont</place>
             <image>example-event04.jpg</image>
             <positions>
-                <position>Responsable</position>
-                <position>Accompagnement</position>
+                <position>Organisateur / Organisatrice d'Événements</position>
+                <position>Animateur / Animatrice de Salle</position>
+                <position>Agent Commercial Indépendant</position>
             </positions>
         </convention>
         <candidate>
@@ -21,8 +22,8 @@
             <email>john.doe@mail.fr</email>
             <personality>Dominant</personality>
         </candidate>
-        <choiceOne>Responsable</choiceOne>
-        <choiceTwo>Accompagnement</choiceTwo>
+        <choiceOne>Organisateur / Organisatrice d'Événements</choiceOne>
+        <choiceTwo>Animateur / Animatrice de Salle</choiceTwo>
         <motivation>Podio utir enim scelerisque felis imperdiet proin blandit volutpat maecenas!</motivation>
         <validated>false</validated>
     </candidacy>
@@ -34,8 +35,9 @@
             <place>Bordeaux</place>
             <image>example-event06.jpg</image>
             <positions>
-                <position>Responsable</position>
-                <position>Accompagnement</position>
+                <position>Organisateur / Organisatrice d'Événements</position>
+                <position>Agent d'Accueil Invités</position>
+                <position>Responsable Sureté et Sécurité</position>
             </positions>
         </convention>
         <candidate>
@@ -47,8 +49,8 @@
             <email>jane.doe@mail.fr</email>
             <personality>Stable</personality>
         </candidate>
-        <choiceOne>Responsable</choiceOne>
-        <choiceTwo>Accompagnement</choiceTwo>
+        <choiceOne>Agent d'Accueil Invités</choiceOne>
+        <choiceTwo>Responsable Sureté et Sécurité</choiceTwo>
         <motivation>Tincidunt id ornare massa eget egestas lacus laoreet non curabitur purus!</motivation>
         <validated>false</validated>
     </candidacy>

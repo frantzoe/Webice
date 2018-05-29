@@ -154,7 +154,7 @@ public class Candidacy {
      * Gets the value of the validated property.
      * 
      */
-    public Boolean isValidated() {
+    public Boolean getValidated() {
         return validated;
     }
 

@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:useBean id="conventions" scope="request" type="java.util.List"/>
+<% int chbxCount = 99; %>
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -248,35 +250,29 @@
                                     </p>
                                 </fieldset>
                                 <fieldset class="tab">
-                                    <h3>Questionnaire</h3>
+                                    <h3>Candidature</h3>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                         <input class="mdl-textfield__input" id="choice" name="choice" type="text" readonly>
                                         <label class="mdl-textfield__label" for="choice">Choix</label>
                                         <span class="mdl-textfield__error">FieldError</span>
-                                        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="choice">
-                                            <jsp:useBean id="conventions" scope="request" type="java.util.List"/>
+                                        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="choice" id="selist">
                                             <c:forEach var="convention" items="${conventions}">
-                                                <li class="mdl-menu__item" onclick="setChoice('${convention.label}')">${convention.label}</li>
+                                                <li class="mdl-menu__item" onclick="setChoice(this)">${convention.label}</li>
                                             </c:forEach>
                                         </ul>
                                     </div>
-                                    <div class="sel" id="selection">
-                                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
-                                            <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input">
-                                            <span class="mdl-checkbox__label">Agent d'Accueil Invités</span>
-                                        </label>
-                                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
-                                            <input type="checkbox" id="checkbox-2" class="mdl-checkbox__input">
-                                            <span class="mdl-checkbox__label">Responsable Sureté et Sécurité</span>
-                                        </label>
-                                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-3">
-                                            <input type="checkbox" id="checkbox-3" class="mdl-checkbox__input">
-                                            <span class="mdl-checkbox__label">Organisateur / Organisatrice d'Événements</span>
-                                        </label>
-                                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-4">
-                                            <input type="checkbox" id="checkbox-4" class="mdl-checkbox__input">
-                                            <span class="mdl-checkbox__label">Animateur / Animatrice de Salle</span>
-                                        </label>
+                                    <div id="selection">
+                                        <c:forEach var="convention" items="${conventions}">
+                                            <div class="pos">
+                                                <c:forEach var="position" items="${convention.positions.position}">
+                                                    <% chbxCount += 1; %>
+                                                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1<% out.print(chbxCount); %>">
+                                                        <input type="checkbox" id="checkbox-1<% out.print(chbxCount); %>" class="mdl-checkbox__input">
+                                                        <span class="mdl-checkbox__label">${position}</span>
+                                                    </label>
+                                                </c:forEach>
+                                            </div>
+                                        </c:forEach>
                                     </div>
                                     <div style="margin-bottom: 256px;"></div>
                                 </fieldset>
@@ -303,6 +299,10 @@
                 </div>
             </main>
             <div class="mdl-layout__obfuscator"></div>
+        </div>
+        <div id="registration_snackbar" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
         </div>
         <script src="resources/material/scripts/material.min.js"></script>
         <script src="resources/scripts/formstep.js"></script>

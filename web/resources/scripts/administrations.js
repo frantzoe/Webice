@@ -8,10 +8,10 @@ function conventionDialog(con) {
     if (!dialog.showModal) {
         dialogPolyfill.registerDialog(dialog);
     }
-    let closeClickHandler = function (event) {
+    const closeClickHandler = function (event) {
         dialog.close();
     };
-    let showClickHandler = function(event) {
+    const showClickHandler = function (event) {
         content.innerHTML = '<p>Confirmez-vous vouloir supprimer l\'événement <strong>' + con + '</strong> ?</p>';
         dialog.showModal();
     };

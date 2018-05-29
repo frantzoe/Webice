@@ -229,6 +229,8 @@ img.content-image {
     display: none;
 }
 
-.sel {
+/* Hide all positions by default: */
+.pos {
     display: none;
 }
+

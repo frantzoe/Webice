@@ -7,8 +7,9 @@
         <place>Lormont</place>
         <image>example-event04.jpg</image>
         <positions>
-            <position>Responsable</position>
-            <position>Accompagnement</position>
+            <position>Organisateur / Organisatrice d'Événements</position>
+            <position>Animateur / Animatrice de Salle</position>
+            <position>Agent Commercial Indépendant</position>
         </positions>
     </convention>
     <convention>
@@ -18,8 +19,9 @@
         <place>Bordeaux</place>
         <image>example-event06.jpg</image>
         <positions>
-            <position>Responsable</position>
-            <position>Accompagnement</position>
+            <position>Organisateur / Organisatrice d'Événements</position>
+            <position>Agent d'Accueil Invités</position>
+            <position>Responsable Sureté et Sécurité</position>
         </positions>
     </convention>
     <convention>
@@ -29,8 +31,9 @@
         <place>Talence</place>
         <image>example-event03.jpg</image>
         <positions>
-            <position>Responsable</position>
-            <position>Accompagnement</position>
+            <position>Responsable Sureté et Sécurité</position>
+            <position>Organisateur / Organisatrice d'Événements</position>
+            <position>Responsable Sureté et Sécurité</position>
         </positions>
     </convention>
     <convention>
@@ -40,8 +43,10 @@
         <place>Pessac</place>
         <image>example-event02.jpg</image>
         <positions>
-            <position>Responsable</position>
-            <position>Accompagnement</position>
+            <position>Agent d'Accueil Invités</position>
+            <position>Responsable Sureté et Sécurité</position>
+            <position>Organisateur / Organisatrice d'Événements</position>
+            <position>Animateur / Animatrice de Salle</position>
         </positions>
     </convention>
     <convention>
@@ -51,8 +56,9 @@
         <place>Mérignac</place>
         <image>example-event08.jpg</image>
         <positions>
-            <position>Responsable</position>
-            <position>Accompagnement</position>
+            <position>Agent Commercial Indépendant</position>
+            <position>Responsable Sureté et Sécurité</position>
+            <position>Organisateur / Organisatrice d'Événements</position>
         </positions>
     </convention>
     <convention>
@@ -62,8 +68,10 @@
         <place>Bègles</place>
         <image>example-event09.jpg</image>
         <positions>
-            <position>Responsable</position>
-            <position>Accompagnement</position>
+            <position>Responsable Sureté et Sécurité</position>
+            <position>Agent d'Accueil Invités</position>
+            <position>Animateur / Animatrice de Salle</position>
+            <position>Àgent d'Accompagnement P.M.R.</position>
         </positions>
     </convention>
     <convention>
@@ -73,8 +81,9 @@
         <place>Bègles</place>
         <image>example-event05.jpg</image>
         <positions>
-            <position>Responsable</position>
-            <position>Accompagnement</position>
+            <position>Agent Commercial Indépendant</position>
+            <position>Agent d'Accueil Invités</position>
+            <position>Animateur / Animatrice de Salle</position>
         </positions>
     </convention>
     <convention>
@@ -84,8 +93,9 @@
         <place>Bègles</place>
         <image>example-event07.jpg</image>
         <positions>
-            <position>Responsable</position>
-            <position>Accompagnement</position>
+            <position>Organisateur / Organisatrice d'Événements</position>
+            <position>Àgent d'Accompagnement P.M.R.</position>
+            <position>Agent Commercial Indépendant</position>
         </positions>
     </convention>
 </conventions>

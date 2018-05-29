@@ -24,6 +24,7 @@ public class RegistServlet extends HttpServlet {
 
     //**
     private static final String PAGE = "/WEB-INF/views/registration.jsp";
+    private static final String REDI = "/index.jsp";
     private static final String PATH_CANDIDATES = "/WEB-INF/database/candidates.xml";
     private static final String PATH_CANDIDACIES = "/WEB-INF/database/candidacies.xml";
     private static final String PATH_CONVENTIONS = "/WEB-INF/database/conventions.xml";
@@ -61,6 +62,6 @@ public class RegistServlet extends HttpServlet {
 
         LOGGER.log(Level.INFO, candidacy.toString());
 
-        getServletContext().getRequestDispatcher(PAGE).forward(request, response);
+        getServletContext().getRequestDispatcher(REDI).forward(request, response);
     }
 }
