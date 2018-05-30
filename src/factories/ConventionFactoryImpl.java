@@ -18,8 +18,8 @@ public class ConventionFactoryImpl implements ConventionFactory {
 
     @Override
     public List<Convention> getAll() {
-        try { Conventions candidacies = JParse.unmarshal(Conventions.class, FILE);
-            return candidacies.getConvention();
+        try { Conventions conventions = JParse.unmarshal(Conventions.class, FILE);
+            return conventions.getConvention();
         } catch (JAXBException e) { e.printStackTrace(); }
         return null;
     }

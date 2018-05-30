@@ -6,6 +6,6 @@
     version="4.0">
     <context-param>
         <param-name>localDirectoryPath</param-name>
-        <param-value>C:\Users\Lincoln\Workspace\Projects\College\Projects\Webice\web\WEB-INF\database</param-value>
+        <param-value>C:\Users\Marine\Documents\ETUDE\M1 MIAGE\S8\Web Services\Projet\Webice\web\WEB-INF\database</param-value>
     </context-param>
 </web-app>

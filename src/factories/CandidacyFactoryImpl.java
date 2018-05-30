@@ -62,7 +62,7 @@ public class CandidacyFactoryImpl implements CandidacyFactory {
     }
 
     @Override
-    public void validate() {
-
+    public void validate(Candidate candidate, Convention convention) {
+    	getOne(candidate, convention).setValidated(true);
     }
 }

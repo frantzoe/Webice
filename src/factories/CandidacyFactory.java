@@ -18,6 +18,6 @@ public interface CandidacyFactory {
     //**
     void delete(Candidacy candidacy);
     //**
-    void validate();
+    void validate(Candidate candidate, Convention convention);
 
 }

@@ -7,6 +7,18 @@
 # User Specific
 /.idea/
 
+# Settings 
+/.settings/
+
+# Build 
+/build/
+
+# Classpath 
+*.classpath
+
+# Project 
+*.project
+
 # IntelliJ
 /out/
 
