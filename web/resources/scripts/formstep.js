@@ -1,4 +1,4 @@
-let currentTab = 1; // Current tab is set to be the first tab (0)
+let currentTab = 0; // Current tab is set to be the first tab (0)
 let currentPos;
 let selected = false;
 showTab(currentTab); // Display the crurrent tab
