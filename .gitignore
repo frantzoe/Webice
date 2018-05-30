@@ -25,6 +25,9 @@
 # Web
 /web/WEB-INF/web.xml
 
+# META-INF
+/web/META-INF/
+
 # Package Files
 *.jar
 *.war
