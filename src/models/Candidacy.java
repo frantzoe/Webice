@@ -28,6 +28,7 @@ public class Candidacy {
     protected String choiceTwo;
     @XmlElement(required = true)
     protected String motivation;
+    @XmlElement(required = true)
     protected Boolean validated;
 
     /**

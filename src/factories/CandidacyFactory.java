@@ -17,5 +17,7 @@ public interface CandidacyFactory {
     void update(Candidacy candidacy);
     //**
     void delete(Candidacy candidacy);
+    //**
+    void validate();
 
 }

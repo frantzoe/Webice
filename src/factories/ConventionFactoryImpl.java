@@ -10,15 +10,15 @@ import java.util.List;
 
 public class ConventionFactoryImpl implements ConventionFactory {
 
-    private String PATH;
+    private File FILE;
 
     public ConventionFactoryImpl(String path) {
-        this.PATH = path;
+        this.FILE = new File(path);
     }
 
     @Override
     public List<Convention> getAll() {
-        try { Conventions candidacies = JParse.unmarshal(Conventions.class, new File(PATH));
+        try { Conventions candidacies = JParse.unmarshal(Conventions.class, FILE);
             return candidacies.getConvention();
         } catch (JAXBException e) { e.printStackTrace(); }
         return null;
@@ -36,16 +36,26 @@ public class ConventionFactoryImpl implements ConventionFactory {
 
     @Override
     public void create(Convention convention) {
-        getAll().add(convention);
+        try { List<Convention> conventions = getAll();
+            conventions.add(convention);
+            JParse.marshal(conventions, FILE);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void update(Convention convention) {
-
+        //**
     }
 
     @Override
     public void delete(Convention convention) {
-        getAll().remove(convention);
+        try { List<Convention> conventions = getAll();
+            conventions.remove(convention);
+            JParse.marshal(conventions, FILE);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
     }
 }

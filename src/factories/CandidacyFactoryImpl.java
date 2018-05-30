@@ -12,15 +12,15 @@ import java.util.List;
 
 public class CandidacyFactoryImpl implements CandidacyFactory {
 
-    private String PATH;
+    private File FILE;
 
     public CandidacyFactoryImpl(String path) {
-        this.PATH = path;
+        this.FILE = new File(path);
     }
 
     @Override
     public List<Candidacy> getAll() {
-        try { Candidacies candidacies = JParse.unmarshal(Candidacies.class, new File(PATH));
+        try { Candidacies candidacies = JParse.unmarshal(Candidacies.class, FILE);
             return candidacies.getCandidacy();
         } catch (JAXBException e) { e.printStackTrace(); }
         return null;
@@ -38,7 +38,12 @@ public class CandidacyFactoryImpl implements CandidacyFactory {
 
     @Override
     public void create(Candidacy candidacy) {
-        getAll().add(candidacy);
+        try { List<Candidacy> candidacies = getAll();
+            candidacies.add(candidacy);
+            JParse.marshal(candidacies, FILE);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -48,6 +53,16 @@ public class CandidacyFactoryImpl implements CandidacyFactory {
 
     @Override
     public void delete(Candidacy candidacy) {
-        getAll().remove(candidacy);
+        try { List<Candidacy> candidacies = getAll();
+            candidacies.remove(candidacy);
+            JParse.marshal(candidacies, FILE);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void validate() {
+
     }
 }
