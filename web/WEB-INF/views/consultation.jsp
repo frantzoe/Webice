@@ -51,7 +51,7 @@
                                 ${convention.detail}
                             </div>
                             <div class="mdl-card__actions mdl-card--border">
-                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--accent">
+                                <a class="mdl-button mdl-button--colored mdl-button--disabled mdl-js-button mdl-js-ripple-effect mdl-color-text--accent">
                                     <i class="material-icons ">schedule</i>
                                     ${convention.scheduled} à ${convention.place}
                                 </a>
@@ -59,7 +59,6 @@
                         </div>
                     </c:forEach>
                 </div>
-
             </main>
             <div class="mdl-layout__obfuscator"></div>
         </div>
