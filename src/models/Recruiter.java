@@ -77,6 +77,19 @@ public class Recruiter {
         this.surname = value;
     }
 
+    
+    /**
+     * Gets the value of the fullname.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFullname() {
+    	return(forename+" "+surname);
+    }
+    
     /**
      * Gets the value of the email property.
      * 

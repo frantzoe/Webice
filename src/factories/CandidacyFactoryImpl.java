@@ -27,16 +27,6 @@ public class CandidacyFactoryImpl implements CandidacyFactory {
     }
 
     @Override
-    public Candidacy getOne(String email, String label) {
-        for (Candidacy candidacy : getAll()) {
-            if (candidacy.getCandidate().getEmail().equals(email) && candidacy.getConvention().getLabel().equals(label)) {
-                return candidacy;
-            }
-        }
-        return null;
-    }
-
-    @Override
     public Candidacy getOne(Candidate candidate, Convention convention) {
         for (Candidacy candidacy : getAll()) {
             if (candidacy.getCandidate().equals(candidate) && candidacy.getConvention().equals(convention)) {
@@ -69,11 +59,6 @@ public class CandidacyFactoryImpl implements CandidacyFactory {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void validate(Candidacy candidacy, String choice) {
-
     }
 
     @Override
