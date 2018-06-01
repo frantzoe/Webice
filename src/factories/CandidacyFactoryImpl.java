@@ -70,7 +70,7 @@ public class CandidacyFactoryImpl implements CandidacyFactory {
             		candidacy.setChoiceTwo(null);
             	}
             	else {
-            		candidacy.setChoiceTwo(null);
+            		candidacy.setChoiceOne(null);
             		}
             	candidacy.setValidated(true);
                 return;
