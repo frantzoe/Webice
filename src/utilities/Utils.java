@@ -1,6 +1,7 @@
 package utilities;
 
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,7 +17,7 @@ public class Utils {
         int influent = 0;
         int stable = 0;
         float percentage = 0;
-        String result = "Non Défini";
+        String result = "Non Dï¿½fini";
 
         /* ********** Orders Of The Quiz Answers ********** */
         final String[] orders = new String[]{"c,d,i,s", "s,d,c,i", "s,i,c,d", "s,i,c,d", "c,s,d,i", "c,s,i,d"};
@@ -56,22 +57,26 @@ public class Utils {
             percentage = influent * 100 / 6;
         }
 
-        LOGGER.log(Level.INFO, "[Personalité: " + result + " | Percentage: " + percentage + "%]");
+        LOGGER.log(Level.INFO, "[Personalitï¿½: " + result + " | Percentage: " + percentage + "%]");
 
         return result;
     }
     
-	public static String hash(String password_rec) throws Exception {
-		
-		MessageDigest md = MessageDigest.getInstance("SHA-256");
-		md.update(password_rec.getBytes());
-		
-		byte byteData[] = md.digest();
-		
-		StringBuffer sb= new StringBuffer();
-		for (int i =0; i<byteData.length; i++) {
-			sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
-		}
-		return sb.toString();
+	public static String hash(String password_rec) {
+
+        String hash = null;
+
+        try { MessageDigest messageDigest = null;
+            messageDigest = MessageDigest.getInstance("SHA-256");
+            messageDigest.update(password_rec.getBytes());
+            byte byteData[] = messageDigest.digest();
+            StringBuilder stringBuffer = new StringBuilder();
+            for (byte aByteData : byteData) {
+                stringBuffer.append(Integer.toString((aByteData & 0xff) + 0x100, 16).substring(1));
+            }
+            hash = stringBuffer.toString();
+        } catch (NoSuchAlgorithmException e) { e.printStackTrace(); }
+
+		return hash;
 	}
 }

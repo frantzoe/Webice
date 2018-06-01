@@ -27,8 +27,7 @@ public class Convention {
     @XmlElement(required = true)
     protected String detail;
     @XmlElement(required = true)
-    @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar scheduled;
+    protected String scheduled;
     @XmlElement(required = true)
     protected String place;
     @XmlElement(required = true)
@@ -92,7 +91,7 @@ public class Convention {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public XMLGregorianCalendar getScheduled() {
+    public String getScheduled() {
         return scheduled;
     }
 
@@ -101,10 +100,10 @@ public class Convention {
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-    public void setScheduled(XMLGregorianCalendar value) {
+    public void setScheduled(String value) {
         this.scheduled = value;
     }
 
