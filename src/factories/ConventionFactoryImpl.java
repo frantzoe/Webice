@@ -58,4 +58,14 @@ public class ConventionFactoryImpl implements ConventionFactory {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void delete(String label) {
+        try { List<Convention> conventions = getAll();
+            conventions.remove(getOne(label));
+            JParse.marshal(conventions, FILE);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -16,7 +16,7 @@ public class ConsultServlet extends HttpServlet {
 
     //**
     private static final String PAGE = "/WEB-INF/views/consultation.jsp";
-    private static final String PATH = "/WEB-INF/database/conventions.xml";
+    private static final String PATH = "/conventions.xml";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

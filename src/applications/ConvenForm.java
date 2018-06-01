@@ -1,6 +1,7 @@
 package applications;
 
 import collections.Candidacies;
+import factories.ConventionFactoryImpl;
 import models.Candidacy;
 import models.Candidate;
 import models.Convention;
@@ -18,83 +19,49 @@ public class ConvenForm {
     private static final Logger LOGGER = Logger.getLogger(ConvenForm.class.getCanonicalName());
 
     /* ********** Declaring Candidacy Variables ********** */
-    private static final String USER_FNAME = "surname";
-    private static final String USER_LNAME = "forename";
-    private static final String USER_GENDER = "gender";
-    private static final String USER_BIRTH = "birthday";
-    private static final String USER_EMAIL = "email";
-    private static final String USER_PHONE = "telephone";
-    private static final String USER_ADDR = "street";
-    private static final String USER_CITY = "city";
-    private static final String USER_ZIP = "zip";
-    private static final String USER_MOTIV = "motivation";
-    private static final String USER_CHOICE = "choice";
+    private static final String CONV_LABEL = "label";
+    private static final String CONV_DETAIL = "detail";
+    private static final String CONV_SCHED = "scheduled";
+    private static final String CONV_POS1 = "position1";
+    private static final String CONV_POS2 = "position2";
+    private static final String CONV_POS3 = "position3";
+    private static final String CONV_POS4 = "position4";
 
-    /* ********** Declaring Quiz Variables ********** */
-    private static final String QUESTION1 = "question-1";
-    private static final String QUESTION2 = "question-2";
-    private static final String QUESTION3 = "question-3";
-    private static final String QUESTION4 = "question-4";
-    private static final String QUESTION5 = "question-5";
-    private static final String QUESTION6 = "question-6";
+    public Convention create(String pathConventions, HttpServletRequest request) {
 
-    public Candidacy register(Convention convention, String pathCandidacies, HttpServletRequest request) {
-
-        /* ********** Retrieving Candidate Parameters ********** */
-        final String surname = request.getParameter(USER_LNAME).trim();
-        final String forename = request.getParameter(USER_FNAME).trim();
-        final String email = request.getParameter(USER_EMAIL).trim();
-        final String gender = request.getParameter(USER_GENDER).trim();
-        final String birthday = request.getParameter(USER_BIRTH).trim();
-        final String telephone = request.getParameter(USER_PHONE).trim();
-
-        /* ********** Retrieving Candidacy Parameters ********** */
-        final String motivation = request.getParameter(USER_MOTIV).trim();
-        final String choice = request.getParameter(USER_CHOICE).trim();
-
-        /* ********** Retrieving Quiz Parameters ********** */
-        final String question1 = request.getParameter(QUESTION1).trim();
-        final String question2 = request.getParameter(QUESTION2).trim();
-        final String question3 = request.getParameter(QUESTION3).trim();
-        final String question4 = request.getParameter(QUESTION4).trim();
-        final String question5 = request.getParameter(QUESTION5).trim();
-        final String question6 = request.getParameter(QUESTION6).trim();
+        /* ********** Retrieving Convention Parameters ********** */
+        final String label = request.getParameter(CONV_LABEL).trim();
+        final String detail = request.getParameter(CONV_DETAIL).trim();
+        final String scheduled = request.getParameter(CONV_SCHED).trim();
+        final String position1 = request.getParameter(CONV_POS1).trim();
+        final String position2 = request.getParameter(CONV_POS2).trim();
+        final String position3 = request.getParameter(CONV_POS3).trim();
+        final String position4 = request.getParameter(CONV_POS4).trim();
 
         /* ********** TCreating Candidate ********** */
-        Candidate candidate = new Candidate();
-        candidate.setSurname(surname);
-        candidate.setForename(forename);
-        candidate.setGender(gender);
-        candidate.setBirthday(birthday);
-        candidate.setTelephone(telephone);
-        candidate.setEmail(email);
-        candidate.setPersonality(Utils.getPersonality(question1, question2, question3, question4, question5, question6));
-        /*
-        String address = request.getParameter(USER_ADDR);
-        String city = request.getParameter(USER_CITY);
-        String zip = request.getParameter(USER_ZIP);
-        String motivation = request.getParameter(USER_MOTIV);
-        */
+        Convention convention = new Convention();
+        convention.setLabel(label);
+        convention.setDetail(detail);
 
-        /* ********** Creating Candidacy ********** */
-        Candidacy candidacy = new Candidacy();
-        candidacy.setCandidate(candidate);
-        candidacy.setConvention(convention);
-        candidacy.setMotivation(motivation);
-        candidacy.setValidated(false);
+        if (!position1.isEmpty()) {
+            convention.getPositions().getPosition().add(position1);
+        }
+        if (!position2.isEmpty()) {
+            convention.getPositions().getPosition().add(position2);
+        }
+        if (!position3.isEmpty()) {
+            convention.getPositions().getPosition().add(position3);
+        }
+        if (!position4.isEmpty()) {
+            convention.getPositions().getPosition().add(position4);
+        }
 
-        LOGGER.log(Level.INFO, candidacy.toString());
-        LOGGER.log(Level.INFO, request.getServletContext().getRealPath(pathCandidacies));
+        final ConventionFactoryImpl conventionFactory = new ConventionFactoryImpl(pathConventions);
 
-        try {
-            File file = new File(request.getServletContext().getRealPath(pathCandidacies));
-            Candidacies candidacies = JParse.unmarshal(Candidacies.class, file);
-            candidacies.addCandidacy(candidacy);
-            JParse.marshal(candidacies, file);
-        } catch (Exception e) {e.printStackTrace();}
+        LOGGER.log(Level.INFO, convention.toString());
 
-        LOGGER.log(Level.INFO, candidacy.toString());
+        conventionFactory.create(convention);
 
-        return candidacy;
+        return convention;
     }
 }

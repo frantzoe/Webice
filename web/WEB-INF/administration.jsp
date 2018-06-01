@@ -116,37 +116,98 @@
                         <span class="visuallyhidden">Add</span>
                     </button>
                     <div class="mdl-tooltip" data-mdl-for="add">Ajouter un nouvel Événement</div-->
-                    <jsp:useBean id="conventions" scope="request" type="java.util.ArrayList"/>
-                    <c:forEach var="convention" items="${conventions}">
-                        <%convCount += 1;%>
-                        <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-                            <div class="mdl-card mdl-cell mdl-cell--12-col">
-                                <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
-                                    <h4 class="mdl-cell mdl-cell--12-col">${convention.label}</h4>
-                                    <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                                        <div class="section__circle-container__circle mdl-color--primary">
-                                            <i class="material-icons mdl-color-text--white">event</i>
+                    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                        <div class="mdl-tabs__tab-bar">
+                            <a href="#see-panel" class="mdl-tabs__tab is-active">Consulter</a>
+                            <a href="#add-panel" class="mdl-tabs__tab">Ajouter</a>
+                        </div>
+                        <div class="mdl-tabs__panel is-active" id="see-panel">
+                            <jsp:useBean id="conventions" scope="request" type="java.util.ArrayList"/>
+                            <c:forEach var="convention" items="${conventions}">
+                                <%convCount += 1;%>
+                                <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+                                    <div class="mdl-card mdl-cell mdl-cell--12-col">
+                                        <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+                                            <h4 class="mdl-cell mdl-cell--12-col">${convention.label}</h4>
+                                            <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                                                <div class="section__circle-container__circle mdl-color--primary">
+                                                    <i class="material-icons mdl-color-text--white">event</i>
+                                                </div>
+                                            </div>
+                                            <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                                                <h5>${convention.label}</h5>
+                                                Détails : ${convention.detail}
+                                            </div>
+                                        </div>
+                                        <div class="mdl-card__actions mdl-card--border">
+                                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--accent">
+                                                <i class="material-icons ">schedule</i>
+                                                    ${convention.scheduled} à ${convention.place}
+                                            </a>
                                         </div>
                                     </div>
-                                    <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                                        <h5>${convention.label}</h5>
-                                        Détails : ${convention.detail}
+                                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="delCon<% out.print(convCount); %>" name="delCon<% out.print(convCount); %>" onclick="conventionDialog('${convention.label}')">
+                                        <i class="material-icons">delete</i>
+                                    </button>
+                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" data-mdl-for="delCon<% out.print(convCount); %>">Supprimer Événement</div>
+                                </section>
+                            </c:forEach>
+                            <section class="section--footer mdl-color--white mdl-grid"></section>
+                        </div>
+                        <div class="mdl-tabs__panel" id="add-panel">
+                            <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+                                <div class="mdl-card mdl-cell mdl-cell--12-col">
+                                    <div class="mdl-card__supporting-text">
+                                        <form id="creForm" method="post" action="registration">
+                                            <fieldset>
+                                                <h3>Nouvel Evenement</h3>
+                                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                    <input class="mdl-textfield__input" id="label" name="label" pattern="[A-Z,a-z, ]*" type="text">
+                                                    <label class="mdl-textfield__label" for="label">Libéllé</label>
+                                                    <span class="mdl-textfield__error">FieldError</span>
+                                                </div>
+                                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                    <textarea class="mdl-textfield__input" id="description" name="description" rows="5" type="text"></textarea>
+                                                    <label class="mdl-textfield__label" for="description">Description</label>
+                                                    <span class="mdl-textfield__error">FieldError</span>
+                                                </div>
+                                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                    <input class="mdl-textfield__input" id="scheduled" name="scheduled" type="date">
+                                                    <label class="mdl-textfield__label" for="scheduled">Date</label>
+                                                    <span class="mdl-textfield__error">FieldError</span>
+                                                </div>
+                                                <div class="mdl-textfield mdl-js-textfield mdl mdl-textfield--floating-label">
+                                                    <input class="mdl-textfield__input" id="place" name="place" pattern="[A-Z,a-z, ]*" type="text">
+                                                    <label class="mdl-textfield__label" for="place">Lieu</label>
+                                                    <span class="mdl-textfield__error">FieldError</span>
+                                                </div>
+                                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                    <input class="mdl-textfield__input" id="position1" name="position1" pattern="[A-Z,a-z, ]*" type="text">
+                                                    <label class="mdl-textfield__label" for="position1">Mission</label>
+                                                    <span class="mdl-textfield__error">FieldError</span>
+                                                </div>
+                                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                    <input class="mdl-textfield__input" id="position2" name="position2" pattern="[A-Z,a-z, ]*" type="text">
+                                                    <label class="mdl-textfield__label" for="position2">Mission</label>
+                                                    <span class="mdl-textfield__error">FieldError</span>
+                                                </div>
+                                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                    <input class="mdl-textfield__input" id="position3" name="position3" pattern="[A-Z,a-z, ]*" type="text">
+                                                    <label class="mdl-textfield__label" for="position3">Mission</label>
+                                                    <span class="mdl-textfield__error">FieldError</span>
+                                                </div>
+                                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                    <input class="mdl-textfield__input" id="position4" name="position4" pattern="[A-Z,a-z, ]*" type="text">
+                                                    <label class="mdl-textfield__label" for="position4">Mission</label>
+                                                    <span class="mdl-textfield__error">FieldError</span>
+                                                </div>
+                                            </fieldset>
+                                        </form>
                                     </div>
                                 </div>
-                                <div class="mdl-card__actions mdl-card--border">
-                                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--accent">
-                                        <i class="material-icons ">schedule</i>
-                                        ${convention.scheduled} à ${convention.place}
-                                    </a>
-                                </div>
-                            </div>
-                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="delCon<% out.print(convCount); %>" name="delCon<% out.print(convCount); %>" onclick="conventionDialog('${convention.label}')">
-                                <i class="material-icons">delete</i>
-                            </button>
-                            <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" data-mdl-for="delCon<% out.print(convCount); %>">Supprimer Événement</div>
-                        </section>
-                    </c:forEach>
-                    <section class="section--footer mdl-color--white mdl-grid"></section>
+                            </section>
+                        </div>
+                    </div>
                 </div>
                 <footer class="mdl-mini-footer">
                     <div class="mdl-mini-footer__left-section">

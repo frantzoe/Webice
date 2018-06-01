@@ -15,4 +15,6 @@ public interface ConventionFactory {
     void update(Convention convention);
     //**
     void delete(Convention convention);
+    //**
+    void delete(String label);
 }
