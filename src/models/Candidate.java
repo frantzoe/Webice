@@ -82,6 +82,18 @@ public class Candidate {
     }
 
     /**
+     * Gets the value of the fullname.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFullname() {
+    	return(forename+" "+surname);
+    }
+    
+    /**
      * Gets the value of the gender property.
      * 
      * @return

@@ -4,7 +4,10 @@
 
 package models;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -96,12 +99,23 @@ public class Convention {
     }
     
     /** 
+     * Gets if the convention isn't already done
      * 
-     * @return
+     * @return boolean
      * 
      */
     public boolean getActive() {
-    	return true;
+    	boolean b = true;
+		try {
+	    	Date datejour = new Date();
+	    	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+	    	Date format;
+			format = formatter.parse(scheduled);
+			b=datejour.before(format);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+    	return b;
     }
 
     /**
