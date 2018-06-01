@@ -95,6 +95,15 @@ public class Convention {
     public XMLGregorianCalendar getScheduled() {
         return scheduled;
     }
+    
+    /** 
+     * 
+     * @return
+     * 
+     */
+    public boolean getActive() {
+    	return true;
+    }
 
     /**
      * Sets the value of the scheduled property.
