@@ -63,6 +63,12 @@ public class CandidacyFactoryImpl implements CandidacyFactory {
 
     @Override
     public void validate(Candidate candidate, Convention convention) {
-    	getOne(candidate, convention).setValidated(true);
+        List<Candidacy> candidacies = getAll();
+        for (Candidacy candidacy : candidacies) {
+            if (candidacy.getCandidate().equals(candidate) && candidacy.getConvention().equals(convention)) {
+                candidacy.setValidated(true);
+                return;
+            }
+        }
     }
 }

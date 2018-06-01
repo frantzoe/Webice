@@ -4,6 +4,8 @@
 
 package models;
 
+import utilities.Utils;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -120,7 +122,7 @@ public class Recruiter {
      *     
      */
     public void setPassword(String value) {
-        this.password = value;
+        this.password = Utils.hash(value);
     }
 
     @Override

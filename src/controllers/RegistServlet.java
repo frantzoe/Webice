@@ -24,6 +24,7 @@ public class RegistServlet extends HttpServlet {
 
     //**
     private static final String PAGE = "/WEB-INF/views/registration.jsp";
+    //private static final String PAGE = "/WEB-INF/confirmation.jsp";
     private static final String REDI = "/index.jsp";
     private static final String PATH_CANDIDATES = "/WEB-INF/database/candidates.xml";
     private static final String PATH_CANDIDACIES = "/WEB-INF/database/candidacies.xml";

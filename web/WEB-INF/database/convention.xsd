@@ -3,7 +3,7 @@
         <xs:sequence>
             <xs:element type="xs:string" name="label" />
             <xs:element type="xs:string" name="detail" />
-            <xs:element type="xs:date" name="scheduled" />
+            <xs:element type="xs:string" name="scheduled" />
             <xs:element type="xs:string" name="place" />
             <xs:element type="xs:string" name="image" />
             <xs:element name="positions">
