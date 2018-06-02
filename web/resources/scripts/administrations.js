@@ -4,10 +4,14 @@ function conventionDialog(con) {
     const closeButton = dialog.querySelector('#dialog_convention_close');
     const submitButton = dialog.querySelector('#dialog_convention_submit');
     const content = dialog.querySelector('#dialog_convention_content');
-    //var showButton = document.getElementById(n);
+    submitButton.href = "deletcandidacy?label=" + con;
     if (!dialog.showModal) {
         dialogPolyfill.registerDialog(dialog);
     }
+    const submitClickHandler = function (event) {
+        window.location = encodeURI('deleteconvention?label=' + con);
+        dialog.close();
+    };
     const closeClickHandler = function (event) {
         dialog.close();
     };
@@ -16,11 +20,11 @@ function conventionDialog(con) {
         dialog.showModal();
     };
     closeButton.addEventListener('click', closeClickHandler);
-    submitButton.addEventListener('click', closeClickHandler);
+    submitButton.addEventListener('click', submitClickHandler);
     showClickHandler('click');
 }
 
-function candidacyDialog(can, con) {
+function candidacyDialog(ema, can, con) {
     'use strict';
     const dialog = document.querySelector('#dialog_candidacy');
     const closeButton = dialog.querySelector('#dialog_candidacy_close');
@@ -29,6 +33,10 @@ function candidacyDialog(can, con) {
     if (!dialog.showModal) {
         dialogPolyfill.registerDialog(dialog);
     }
+    const submitClickHandler = function (event) {
+        window.location = encodeURI('deletecandidacy?email=' + ema + '&label=' + con);
+        dialog.close();
+    };
     let closeClickHandler = function (event) {
         dialog.close();
     };
@@ -37,6 +45,6 @@ function candidacyDialog(can, con) {
         dialog.showModal();
     };
     closeButton.addEventListener('click', closeClickHandler);
-    submitButton.addEventListener('click', closeClickHandler);
+    submitButton.addEventListener('click', submitClickHandler);
     showClickHandler('click');
 }

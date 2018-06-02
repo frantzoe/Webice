@@ -18,10 +18,7 @@ public class RecruiterFactoryImpl implements RecruiterFactory {
     
 	@Override
 	public List<Recruiter> getAll() {
-        try { Recruiters recruiters = JParse.unmarshal(Recruiters.class, FILE);
-        	return recruiters.getRecruiter();
-        } catch (JAXBException e) { e.printStackTrace(); }
-        return null;
+        return getRecruiters().getRecruiter();
 	}
 
 	@Override
@@ -36,7 +33,9 @@ public class RecruiterFactoryImpl implements RecruiterFactory {
 
 	@Override
 	public void create(Recruiter recruiter) {
-		//**
+		Recruiters recruiters = getRecruiters();
+		recruiters.getRecruiter().add(recruiter);
+		setRecruiters(recruiters);
 		
 	}
 
@@ -47,10 +46,20 @@ public class RecruiterFactoryImpl implements RecruiterFactory {
 	}
 
 	@Override
-	public void delete(Recruiter recruiter) {
-		//**
-		
+	public void delete(String email) {
+		Recruiters recruiters = getRecruiters();
+		recruiters.getRecruiter().remove(getOne(email));
+		setRecruiters(recruiters);
 	}
 
-  
+	private Recruiters getRecruiters() {
+		try { return JParse.unmarshal(Recruiters.class, FILE);
+		} catch (JAXBException e) { e.printStackTrace(); }
+		return null;
+	}
+
+	private void setRecruiters(Recruiters recruiters) {
+		try { JParse.marshal(recruiters, FILE, FILE.getPath());
+		} catch (JAXBException e) { e.printStackTrace(); }
+	}
 }

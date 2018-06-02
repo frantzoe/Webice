@@ -1,8 +1,10 @@
 package applications;
 
 import collections.Recruiters;
+import factories.RecruiterFactoryImpl;
 import models.Recruiter;
 import utilities.JParse;
+import utilities.Utils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -17,31 +19,21 @@ public class LoginForm {
     /* ********** Declaring Candidacy Variables ********** */
     private static final String USER_MAIL = "email";
     private static final String USER_PASS = "password";
-    private static final String PATH_RECRUITERS = "/WEB-INF/database/recruiters.xml";
 
-    public Recruiter login(HttpServletRequest request) {
+    public Recruiter login(HttpServletRequest request, String pathRecruiters) {
 
         /* ********** Retrieving Recruiter Parameters ********** */
         final String username = request.getParameter(USER_MAIL).trim();
         final String password = request.getParameter(USER_PASS).trim();
 
-        LOGGER.log(Level.INFO, request.getServletContext().getRealPath(PATH_RECRUITERS));
+        RecruiterFactoryImpl recruiterFactory = new RecruiterFactoryImpl(pathRecruiters);
 
-        Recruiter recruiter = null;
+        Recruiter recruiter = recruiterFactory.getOne(username);
 
-        try {
-            File file = new File(request.getServletContext().getRealPath(PATH_RECRUITERS));
-            Recruiters recruiters = JParse.unmarshal(Recruiters.class, file);
-            for (Recruiter rec : recruiters.getRecruiter()) {
-                if (rec.getEmail().equals(username) && rec.getPassword().equals(password)) {
-                    recruiter = rec;
-                    LOGGER.log(Level.INFO, recruiter.toString());
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (recruiter != null && recruiter.getPassword().equals(Utils.hash(password))) {
+            return recruiter;
         }
 
-        return recruiter;
+        return null;
     }
 }

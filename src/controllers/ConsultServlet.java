@@ -1,7 +1,10 @@
 package controllers;
 
 import collections.Conventions;
+import factories.ConventionFactoryImpl;
+import models.Convention;
 import utilities.JParse;
+import utilities.Utils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,38 +13,35 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet(urlPatterns = "/consultation")
 public class ConsultServlet extends HttpServlet {
 
+    /* ********** Logging ********** */
+    private static final Logger LOGGER = Logger.getLogger(ConsultServlet.class.getCanonicalName());
+
+    //**
+    private static final String LOCDIR = "localDirectoryPath";
+    //**
+    private static final String CONVENTIONS = "/conventions.xml";
     //**
     private static final String PAGE = "/WEB-INF/views/consultation.jsp";
-    private static final String PATH = "/conventions.xml";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //**
-        Conventions conventions = null;
 
-        try {
-            //**
-            File file = new File(request.getServletContext().getRealPath(PATH));
-            //**
-            conventions = JParse.unmarshal(Conventions.class, file);
+        final String directory = getServletContext().getInitParameter(LOCDIR);
 
-            System.out.println(conventions.getConvention());
+        final ConventionFactoryImpl conventionFactory = new ConventionFactoryImpl(directory + CONVENTIONS);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        request.setAttribute("conventions", conventionFactory.getAll());
 
-        request.setAttribute("conventions", conventions != null ? conventions.getConvention() : null);
-        getServletContext().getRequestDispatcher(PAGE).forward(request, response);
-    }
+        LOGGER.log(Level.INFO, Utils.hash("password"));
+        LOGGER.log(Level.INFO, Utils.hash("wordpass"));
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //**
         getServletContext().getRequestDispatcher(PAGE).forward(request, response);
     }
 }

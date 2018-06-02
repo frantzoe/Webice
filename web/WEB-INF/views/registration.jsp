@@ -7,8 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <jsp:useBean id="conventions" scope="request" type="java.util.List"/>
 <% int chbxCount = 99; %>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -68,21 +70,6 @@
                                     <div class="mdl-textfield mdl-js-textfield mdl mdl-textfield--floating-label">
                                         <input class="mdl-textfield__input" id="telephone" name="telephone" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" type="tel">
                                         <label class="mdl-textfield__label" for="telephone">Telephone</label>
-                                        <span class="mdl-textfield__error">FieldError</span>
-                                    </div>
-                                    <div class="mdl-textfield mdl-js-textfield mdl mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" id="street" name="street" pattern="[A-Z,a-z, ,0-9]*" type="text">
-                                        <label class="mdl-textfield__label" for="street">Adresse</label>
-                                        <span class="mdl-textfield__error">FieldError</span>
-                                    </div>
-                                    <div class="mdl-textfield mdl-js-textfield mdl mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" id="city" name="city" pattern="[A-Z,a-z, ]*" type="text">
-                                        <label class="mdl-textfield__label" for="city">Ville</label>
-                                        <span class="mdl-textfield__error">FieldError</span>
-                                    </div>
-                                    <div class="mdl-textfield mdl-js-textfield mdl mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" id="zip" name="zip" pattern="[0-9]{5}" type="text">
-                                        <label class="mdl-textfield__label" for="zip">CP</label>
                                         <span class="mdl-textfield__error">FieldError</span>
                                     </div>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -267,7 +254,7 @@
                                                 <c:forEach var="position" items="${convention.positions.position}">
                                                     <% chbxCount += 1; %>
                                                     <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1<% out.print(chbxCount); %>">
-                                                        <input type="checkbox" id="checkbox-1<% out.print(chbxCount); %>" class="mdl-checkbox__input">
+                                                        <input class="mdl-checkbox__input" id="checkbox-1<% out.print(chbxCount); %>" name="choices" type="checkbox" value="${position}">
                                                         <span class="mdl-checkbox__label">${position}</span>
                                                     </label>
                                                 </c:forEach>

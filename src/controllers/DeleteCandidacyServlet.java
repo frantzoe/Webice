@@ -1,9 +1,7 @@
 package controllers;
 
-import factories.*;
-import models.Candidacy;
-import models.Candidate;
-import models.Convention;
+import factories.CandidacyFactoryImpl;
+import factories.ConventionFactoryImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +13,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@WebServlet(urlPatterns = "/deletcandidacy")
+@WebServlet(urlPatterns = "/deletecandidacy")
 public class DeleteCandidacyServlet extends HttpServlet {
 
     /* ********** Logging ********** */
@@ -24,15 +22,18 @@ public class DeleteCandidacyServlet extends HttpServlet {
     //**
     private static final String LOCDIR = "localDirectoryPath";
     //**
+    private static final String CONVENTIONS = "/conventions.xml";
     private static final String CANDIDACIES = "/candidacies.xml";
-    //**
-    private static final String SESSION = "recruiterSession";
     //**
     private static final String REDI = "/login";
     private static final String PAGE = "/WEB-INF/administration.jsp";
+    //**
+    private static final String SESSION = "recruiterSession";
+    //**
+    private static final Integer TAB = 0;
 
     @Override
-    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         final HttpSession session = request.getSession();
 
@@ -40,19 +41,17 @@ public class DeleteCandidacyServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + REDI);
         } else {
             final String directory = getServletContext().getInitParameter(LOCDIR);
-            final CandidacyFactoryImpl candidacyFactory = new CandidacyFactoryImpl(directory + CANDIDACIES);
-            final Candidacy candidacy = candidacyFactory.getOne(request.getParameter("email"), request.getParameter("label"));
-            LOGGER.log(Level.INFO, candidacyFactory.getAll().toString());
-            candidacyFactory.delete(candidacy);
-            getServletContext().getRequestDispatcher(PAGE).forward(request, response);
-        }
-    }
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        final HttpSession session = request.getSession();
-        if (session.getAttribute(SESSION) == null) {
-            response.sendRedirect(request.getContextPath() + REDI);
+            final ConventionFactoryImpl conventionFactory = new ConventionFactoryImpl(directory + CONVENTIONS);
+            final CandidacyFactoryImpl candidacyFactory = new CandidacyFactoryImpl(directory + CANDIDACIES);
+
+            candidacyFactory.delete(request.getParameter("email"), request.getParameter("label"));
+
+            request.setAttribute("tab", TAB);
+            request.setAttribute("candidacies", candidacyFactory.getAll());
+            request.setAttribute("conventions", conventionFactory.getAll());
+
+            getServletContext().getRequestDispatcher(PAGE).forward(request, response);
         }
     }
 }

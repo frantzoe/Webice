@@ -18,10 +18,7 @@ public class CandidateFactoryImpl implements CandidateFactory {
 
     @Override
     public List<Candidate> getAll() {
-        try { Candidates candidates = JParse.unmarshal(Candidates.class, FILE);
-            return candidates.getCandidate();
-        } catch (JAXBException e) { e.printStackTrace(); }
-        return null;
+        return getCandidates().getCandidate();
     }
 
     @Override
@@ -36,12 +33,9 @@ public class CandidateFactoryImpl implements CandidateFactory {
 
     @Override
     public void create(Candidate candidate) {
-        try { List<Candidate> candidates = getAll();
-            candidates.add(candidate);
-            JParse.marshal(candidates, FILE);
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
+        Candidates candidates = getCandidates();
+        candidates.getCandidate().add(candidate);
+        setCandidates(candidates);
     }
 
     @Override
@@ -50,12 +44,20 @@ public class CandidateFactoryImpl implements CandidateFactory {
     }
 
     @Override
-    public void delete(Candidate candidate) {
-        try { List<Candidate> candidates = getAll();
-            candidates.remove(candidate);
-            JParse.marshal(candidates, FILE);
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
+    public void delete(String email) {
+        Candidates candidates = getCandidates();
+        candidates.getCandidate().remove(getOne(email));
+        setCandidates(candidates);
+    }
+
+    private Candidates getCandidates() {
+        try { return JParse.unmarshal(Candidates.class, FILE);
+        } catch (JAXBException e) { e.printStackTrace(); }
+        return null;
+    }
+
+    private void setCandidates(Candidates candidacies) {
+        try { JParse.marshal(candidacies, FILE, FILE.getPath());
+        } catch (JAXBException e) { e.printStackTrace(); }
     }
 }

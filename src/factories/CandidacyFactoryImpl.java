@@ -1,6 +1,7 @@
 package factories;
 
 import collections.Candidacies;
+import collections.Conventions;
 import models.Candidacy;
 import models.Candidate;
 import models.Convention;
@@ -20,16 +21,13 @@ public class CandidacyFactoryImpl implements CandidacyFactory {
 
     @Override
     public List<Candidacy> getAll() {
-        try { Candidacies candidacies = JParse.unmarshal(Candidacies.class, FILE);
-            return candidacies.getCandidacy();
-        } catch (JAXBException e) { e.printStackTrace(); }
-        return null;
+        return getCandidacies().getCandidacy();
     }
 
     @Override
-    public Candidacy getOne(Candidate candidate, Convention convention) {
+    public Candidacy getOne(String email, String label) {
         for (Candidacy candidacy : getAll()) {
-            if (candidacy.getCandidate().equals(candidate) && candidacy.getConvention().equals(convention)) {
+            if (candidacy.getCandidate().getEmail().equals(email) && candidacy.getConvention().getLabel().equals(label)) {
                 return candidacy;
             }
         }
@@ -38,12 +36,9 @@ public class CandidacyFactoryImpl implements CandidacyFactory {
 
     @Override
     public void create(Candidacy candidacy) {
-        try { List<Candidacy> candidacies = getAll();
-            candidacies.add(candidacy);
-            JParse.marshal(candidacies, FILE);
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
+        Candidacies candidacies = getCandidacies();
+        candidacies.getCandidacy().add(candidacy);
+        setCandidacies(candidacies);
     }
 
     @Override
@@ -52,23 +47,36 @@ public class CandidacyFactoryImpl implements CandidacyFactory {
     }
 
     @Override
-    public void delete(Candidacy candidacy) {
-        try { List<Candidacy> candidacies = getAll();
-            candidacies.remove(candidacy);
-            JParse.marshal(candidacies, FILE);
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
+    public void delete(String email, String label) {
+        Candidacies candidacies = getCandidacies();
+        candidacies.getCandidacy().remove(getOne(email, label));
+        setCandidacies(candidacies);
     }
 
     @Override
-    public void validate(Candidate candidate, Convention convention) {
-        List<Candidacy> candidacies = getAll();
-        for (Candidacy candidacy : candidacies) {
-            if (candidacy.getCandidate().equals(candidate) && candidacy.getConvention().equals(convention)) {
+    public void validate(String email, String label, String choice) {
+        Candidacies candidacies = getCandidacies();
+        for (Candidacy candidacy : candidacies.getCandidacy()) {
+            if (candidacy.getCandidate().getEmail().equals(email) && candidacy.getConvention().getLabel().equals(label)) {
+                if (candidacy.getChoiceOne().equals(choice)) {
+                    candidacy.setChoiceTwo(null);
+                } else {
+                    candidacy.setChoiceOne(null);
+                }
                 candidacy.setValidated(true);
-                return;
             }
         }
+        setCandidacies(candidacies);
+    }
+
+    private Candidacies getCandidacies() {
+        try { return JParse.unmarshal(Candidacies.class, FILE);
+        } catch (JAXBException e) { e.printStackTrace(); }
+        return null;
+    }
+
+    private void setCandidacies(Candidacies candidacies) {
+        try { JParse.marshal(candidacies, FILE, FILE.getPath());
+        } catch (JAXBException e) { e.printStackTrace(); }
     }
 }

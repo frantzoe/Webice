@@ -90,7 +90,7 @@ public class Candidate {
      *     
      */
     public String getFullname() {
-    	return(forename+" "+surname);
+    	return(forename + " " + surname);
     }
     
     /**

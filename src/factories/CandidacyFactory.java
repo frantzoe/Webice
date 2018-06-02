@@ -10,15 +10,15 @@ public interface CandidacyFactory {
     //**
     List<Candidacy> getAll();
     //**
-    Candidacy getOne(Candidate candidate, Convention convention);
+    Candidacy getOne(String email, String label);
     //**
     void create(Candidacy candidacy);
     //**
     void update(Candidacy candidacy);
     //**
-    void delete(Candidacy candidacy);
+    void delete(String email, String label);
     //**
-    void validate(Candidate candidate, Convention convention, String position);
+    void validate(String email, String label, String choice);
     
 
 }

@@ -61,6 +61,8 @@ We use [Git](http://semver.org/) for version control.
 
 * **Frantz Toussaint** - [GitHub Profile](https://github.com/FrantZoe)
 * **Marine Guillocheau** - [GitHub Profile](https://github.com/MarineGuillocheau)
+* **Tsilavo Ratrimo** - [GitHub Profile](https://github.com/TsilavoR)
+* **Jean-Baptiste Jeannot** - [GitHub Profile](https://github.com/Drdre33)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 

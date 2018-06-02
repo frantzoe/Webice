@@ -1,7 +1,7 @@
 package controllers;
 
 import factories.CandidacyFactoryImpl;
-import models.Candidacy;
+import factories.ConventionFactoryImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,8 +18,10 @@ public class ValidateCandidacyServlet extends HttpServlet {
 
     /* ********** Logging ********** */
     private static final Logger LOGGER = Logger.getLogger(ValidateCandidacyServlet.class.getCanonicalName());
+
     //**
     private static final String CONVENTIONS = "/conventions.xml";
+    private static final String CANDIDACIES = "/candidacies.xml";
     //**
     private static final String REDI = "/login";
     private static final String PAGE = "/WEB-INF/administration.jsp";
@@ -27,27 +29,31 @@ public class ValidateCandidacyServlet extends HttpServlet {
     private static final String LOCDIR = "localDirectoryPath";
     //**
     private static final String SESSION = "recruiterSession";
+    //**
+    private static final Integer TAB = 0;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        final HttpSession session = request.getSession();
-        if (session.getAttribute(SESSION) == null) {
-            response.sendRedirect(request.getContextPath() + REDI);
-        }
-    }
-
-    @Override
-    protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         final HttpSession session = request.getSession();
 
         if (session.getAttribute(SESSION) == null) {
             response.sendRedirect(request.getContextPath() + REDI);
         } else {
             final String directory = getServletContext().getInitParameter(LOCDIR);
+
+            final ConventionFactoryImpl conventionFactory = new ConventionFactoryImpl(directory + CONVENTIONS);
             final CandidacyFactoryImpl candidacyFactory = new CandidacyFactoryImpl(directory + CANDIDACIES);
-            final Candidacy candidacy = candidacyFactory.getOne(request.getParameter("email"), request.getParameter("label"));
-            LOGGER.log(Level.INFO, candidacyFactory.getAll().toString());
-            candidacyFactory.validate(candidacy);
+
+            candidacyFactory.validate(request.getParameter("email"), request.getParameter("label"), request.getParameter("choice"));
+
+            LOGGER.log(Level.INFO, request.getParameter("email"));
+            LOGGER.log(Level.INFO, request.getParameter("label"));
+            LOGGER.log(Level.INFO, request.getParameter("choice"));
+
+            request.setAttribute("tab", TAB);
+            request.setAttribute("candidacies", candidacyFactory.getAll());
+            request.setAttribute("conventions", conventionFactory.getAll());
+
             getServletContext().getRequestDispatcher(PAGE).forward(request, response);
         }
     }

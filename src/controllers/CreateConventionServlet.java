@@ -1,6 +1,9 @@
 package controllers;
 
 import applications.ConvenForm;
+import factories.CandidacyFactoryImpl;
+import factories.ConventionFactoryImpl;
+import models.Convention;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,11 +23,14 @@ public class CreateConventionServlet extends HttpServlet {
     private static final String LOCDIR = "localDirectoryPath";
     //**
     private static final String CONVENTIONS = "/conventions.xml";
+    private static final String CANDIDACIES = "/candidacies.xml";
     //**
     private static final String SESSION = "recruiterSession";
     //**
     private static final String REDI = "/login";
     private static final String PAGE = "/WEB-INF/administration.jsp";
+    //**
+    private static final Integer TAB = 1;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -43,8 +49,17 @@ public class CreateConventionServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + REDI);
         } else {
             final String directory = getServletContext().getInitParameter(LOCDIR);
+
+            final ConventionFactoryImpl conventionFactory = new ConventionFactoryImpl(directory + CONVENTIONS);
+            final CandidacyFactoryImpl candidacyFactory = new CandidacyFactoryImpl(directory + CANDIDACIES);
+
             final ConvenForm form = new ConvenForm();
-            form.create(directory + CONVENTIONS, request);
+            form.create(request, directory + CONVENTIONS);
+
+            request.setAttribute("tab", TAB);
+            request.setAttribute("candidacies", candidacyFactory.getAll());
+            request.setAttribute("conventions", conventionFactory.getAll());
+
             getServletContext().getRequestDispatcher(PAGE).forward(request, response);
         }
     }

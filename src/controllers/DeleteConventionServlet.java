@@ -1,5 +1,6 @@
 package controllers;
 
+import factories.CandidacyFactoryImpl;
 import factories.ConventionFactoryImpl;
 
 import javax.servlet.ServletException;
@@ -9,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @WebServlet(urlPatterns = "/deleteconvention")
@@ -19,47 +19,38 @@ public class DeleteConventionServlet extends HttpServlet {
     private static final Logger LOGGER = Logger.getLogger(DeleteConventionServlet.class.getCanonicalName());
 
     //**
+    private static final String LOCDIR = "localDirectoryPath";
+    //**
     private static final String CONVENTIONS = "/conventions.xml";
-
+    private static final String CANDIDACIES = "/candidacies.xml";
     //**
     private static final String REDI = "/login";
     private static final String PAGE = "/WEB-INF/administration.jsp";
-
-    //**
-    private static final String LOCDIR = "localDirectoryPath";
-
     //**
     private static final String SESSION = "recruiterSession";
+    //**
+    private static final Integer TAB = 1;
 
     @Override
-    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        final String directory = getServletContext().getInitParameter(LOCDIR);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         final HttpSession session = request.getSession();
-
-        final ConventionFactoryImpl conventionFactory = new ConventionFactoryImpl(directory + CONVENTIONS);
-
-        LOGGER.log(Level.INFO, conventionFactory.getAll().toString());
 
         if (session.getAttribute(SESSION) == null) {
             response.sendRedirect(request.getContextPath() + REDI);
         } else {
-            LOGGER.log(Level.INFO, conventionFactory.getAll().toString());
+            final String directory = getServletContext().getInitParameter(LOCDIR);
+
+            final ConventionFactoryImpl conventionFactory = new ConventionFactoryImpl(directory + CONVENTIONS);
+            final CandidacyFactoryImpl candidacyFactory = new CandidacyFactoryImpl(directory + CANDIDACIES);
+
             conventionFactory.delete(request.getParameter("label"));
+
+            request.setAttribute("tab", TAB);
+            request.setAttribute("candidacies", candidacyFactory.getAll());
+            request.setAttribute("conventions", conventionFactory.getAll());
+
             getServletContext().getRequestDispatcher(PAGE).forward(request, response);
         }
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        final HttpSession session = request.getSession();
-        if (session.getAttribute(SESSION) == null) {
-            response.sendRedirect(request.getContextPath() + REDI);
-        }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
     }
 }

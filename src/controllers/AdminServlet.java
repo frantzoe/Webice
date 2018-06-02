@@ -28,40 +28,29 @@ public class AdminServlet extends HttpServlet {
     //**
     private static final String CANDIDACIES = "/candidacies.xml";
     private static final String CONVENTIONS = "/conventions.xml";
-
     //**
     private static final String REDI = "/login";
     private static final String PAGE = "/WEB-INF/administration.jsp";
     //**
     private static final String SESSION = "recruiterSession";
 
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        LOGGER.log(Level.INFO, "Executed");
-
-        final String directory = getServletContext().getInitParameter(LOCDIR);
 
         final HttpSession session = request.getSession();
-
-        final CandidacyFactoryImpl candidacyFactory = new CandidacyFactoryImpl(directory + CANDIDACIES);
-        final ConventionFactoryImpl conventionFactory = new ConventionFactoryImpl(directory + CONVENTIONS);
-
-        request.setAttribute("candidacies", candidacyFactory.getAll());
-        request.setAttribute("conventions", conventionFactory.getAll());
 
         if (session.getAttribute(SESSION) == null) {
             response.sendRedirect(request.getContextPath() + REDI);
         } else {
-            LOGGER.log(Level.INFO, candidacyFactory.getAll().toString());
+            final String directory = getServletContext().getInitParameter(LOCDIR);
+
+            final CandidacyFactoryImpl candidacyFactory = new CandidacyFactoryImpl(directory + CANDIDACIES);
+            final ConventionFactoryImpl conventionFactory = new ConventionFactoryImpl(directory + CONVENTIONS);
+
+            request.setAttribute("candidacies", candidacyFactory.getAll());
+            request.setAttribute("conventions", conventionFactory.getAll());
+
             getServletContext().getRequestDispatcher(PAGE).forward(request, response);
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //**
-        LOGGER.log(Level.INFO, "Executed");
-        getServletContext().getRequestDispatcher(PAGE).forward(request, response);
     }
 }

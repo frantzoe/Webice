@@ -26,6 +26,7 @@ public class LoginServlet extends HttpServlet {
     //**
     private static final String LOCDIR = "localDirectoryPath";
     //**
+    private static final String RECRUITERS = "/recruiters.xml";
     private static final String CANDIDACIES = "/candidacies.xml";
     private static final String CONVENTIONS = "/conventions.xml";
     //**
@@ -33,38 +34,34 @@ public class LoginServlet extends HttpServlet {
     private static final String NEXT = "/WEB-INF/administration.jsp";
     //**
     private static final String SESSION = "recruiterSession";
+    //**
+    private static final Integer TAB = 0;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        LOGGER.log(Level.INFO, "Executed");
         getServletContext().getRequestDispatcher(PAGE).forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        LOGGER.log(Level.INFO, "Executed");
 
         final String directory = getServletContext().getInitParameter(LOCDIR);
 
         final LoginForm form = new LoginForm();
 
-        final Recruiter recruiter = form.login(request);
+        final Recruiter recruiter = form.login(request, directory + RECRUITERS);
 
         final HttpSession session = request.getSession();
 
-        final CandidacyFactoryImpl candidacyFactory = new CandidacyFactoryImpl(directory + CANDIDACIES);
-        final ConventionFactoryImpl conventionFactory = new ConventionFactoryImpl(directory + CONVENTIONS);
-
-        request.setAttribute("candidacies", candidacyFactory.getAll());
-        request.setAttribute("conventions", conventionFactory.getAll());
-
-        LOGGER.log(Level.INFO, candidacyFactory.getAll().toString());
-
-        /*request.setAttribute(FORM, form);
-        request.setAttribute(USER, recruiter);*/
-
         if (recruiter != null) {
-            LOGGER.log(Level.INFO, recruiter.toString());
+
+            final CandidacyFactoryImpl candidacyFactory = new CandidacyFactoryImpl(directory + CANDIDACIES);
+            final ConventionFactoryImpl conventionFactory = new ConventionFactoryImpl(directory + CONVENTIONS);
+
+            request.setAttribute("tab", TAB);
+            request.setAttribute("candidacies", candidacyFactory.getAll());
+            request.setAttribute("conventions", conventionFactory.getAll());
+
             session.setAttribute(SESSION, recruiter);
             getServletContext().getRequestDispatcher(NEXT).forward(request, response);
         } else {

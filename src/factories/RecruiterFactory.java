@@ -14,5 +14,5 @@ public interface RecruiterFactory {
     //**
     void update(Recruiter recruiter);
     //**
-    void delete(Recruiter recruiter);
+    void delete(String email);
 }

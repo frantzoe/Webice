@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<jsp:useBean id="candidate" scope="request" type="models.Candidate" />
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -31,7 +33,7 @@
                             <div class="section-spacer"></div>
                         </div>
                         <div class="mdl-card__supporting-text mdl-typography--text-center">
-                            <h3>John Doe</h3>
+                            <h3>${candidate.fullname}</h3>
                             Votre candidature à bien été prise en compte.
                             <br>
                             On reviendra vers vous dans les plus brefs délais.

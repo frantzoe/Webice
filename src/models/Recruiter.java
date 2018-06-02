@@ -87,7 +87,7 @@ public class Recruiter {
      *     
      */
     public String getFullname() {
-    	return(forename+" "+surname);
+    	return(forename + " " + surname);
     }
     
     /**

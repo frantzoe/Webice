@@ -1,14 +1,13 @@
 package applications;
 
-import collections.Candidacies;
+import factories.CandidacyFactoryImpl;
+import factories.CandidateFactoryImpl;
+import factories.ConventionFactoryImpl;
 import models.Candidacy;
 import models.Candidate;
-import models.Convention;
-import utilities.JParse;
 import utilities.Utils;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,11 +23,8 @@ public class RegistForm {
     private static final String USER_BIRTH = "birthday";
     private static final String USER_EMAIL = "email";
     private static final String USER_PHONE = "telephone";
-    private static final String USER_ADDR = "street";
-    private static final String USER_CITY = "city";
-    private static final String USER_ZIP = "zip";
     private static final String USER_MOTIV = "motivation";
-    private static final String USER_CHOICE = "choice";
+    private static final String USER_CHOICES = "choices";
 
     /* ********** Declaring Quiz Variables ********** */
     private static final String QUESTION1 = "question-1";
@@ -38,7 +34,7 @@ public class RegistForm {
     private static final String QUESTION5 = "question-5";
     private static final String QUESTION6 = "question-6";
 
-    public Candidacy register(Convention convention, String pathCandidacies, HttpServletRequest request) {
+    public Candidacy register(String label, HttpServletRequest request, String pathCoventions, String pathCandidates, String pathCandidacies) {
 
         /* ********** Retrieving Candidate Parameters ********** */
         final String surname = request.getParameter(USER_LNAME).trim();
@@ -50,7 +46,7 @@ public class RegistForm {
 
         /* ********** Retrieving Candidacy Parameters ********** */
         final String motivation = request.getParameter(USER_MOTIV).trim();
-        final String choice = request.getParameter(USER_CHOICE).trim();
+        final String[] choices = request.getParameterValues(USER_CHOICES);
 
         /* ********** Retrieving Quiz Parameters ********** */
         final String question1 = request.getParameter(QUESTION1).trim();
@@ -59,6 +55,10 @@ public class RegistForm {
         final String question4 = request.getParameter(QUESTION4).trim();
         final String question5 = request.getParameter(QUESTION5).trim();
         final String question6 = request.getParameter(QUESTION6).trim();
+
+        CandidateFactoryImpl candidateFactory = new CandidateFactoryImpl(pathCandidates);
+        CandidacyFactoryImpl candidacyFactory = new CandidacyFactoryImpl(pathCandidacies);
+        ConventionFactoryImpl conventionFactory = new ConventionFactoryImpl(pathCoventions);
 
         /* ********** TCreating Candidate ********** */
         Candidate candidate = new Candidate();
@@ -69,29 +69,27 @@ public class RegistForm {
         candidate.setTelephone(telephone);
         candidate.setEmail(email);
         candidate.setPersonality(Utils.getPersonality(question1, question2, question3, question4, question5, question6));
-        /*
-        String address = request.getParameter(USER_ADDR);
-        String city = request.getParameter(USER_CITY);
-        String zip = request.getParameter(USER_ZIP);
-        String motivation = request.getParameter(USER_MOTIV);
-        */
 
         /* ********** Creating Candidacy ********** */
         Candidacy candidacy = new Candidacy();
         candidacy.setCandidate(candidate);
-        candidacy.setConvention(convention);
+        candidacy.setConvention(conventionFactory.getOne(label));
         candidacy.setMotivation(motivation);
         candidacy.setValidated(false);
 
-        LOGGER.log(Level.INFO, candidacy.toString());
-        LOGGER.log(Level.INFO, request.getServletContext().getRealPath(pathCandidacies));
+        int count = 1;
 
-        try {
-            File file = new File(request.getServletContext().getRealPath(pathCandidacies));
-            Candidacies candidacies = JParse.unmarshal(Candidacies.class, file);
-            candidacies.addCandidacy(candidacy);
-            JParse.marshal(candidacies, file);
-        } catch (Exception e) {e.printStackTrace();}
+        for (String choice : choices) {
+            if (!choice.trim().isEmpty() && count == 1) {
+                candidacy.setChoiceOne(choice);
+                count++;
+            } else if (!choice.trim().isEmpty() && count == 2) {
+                candidacy.setChoiceTwo(choice);
+            }
+        }
+
+        candidateFactory.create(candidate);
+        candidacyFactory.create(candidacy);
 
         LOGGER.log(Level.INFO, candidacy.toString());
 

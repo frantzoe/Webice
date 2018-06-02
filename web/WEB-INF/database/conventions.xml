@@ -1,19 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<conventions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="conventions.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<conventions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="C:\Users\Lincoln\Workspace\Projects\College\Projects\Webice\web\WEB-INF\database\conventions.xsd">
     <convention>
-        <label>Collecte &amp; Recyclage</label>
-        <detail>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Egestas congue quisque egestas diam in arcu. Dolor sit amet consectetur adipiscing elit pellentesque habitant. Non odio euismod lacinia at. Nec feugiat in fermentum posuere.</detail>
-        <scheduled>2018-06-28</scheduled>
-        <place>Lormont</place>
-        <image>example-event04.jpg</image>
-        <positions>
-            <position>Organisateur / Organisatrice d'Événements</position>
-            <position>Animateur / Animatrice de Salle</position>
-            <position>Agent Commercial Indépendant</position>
-        </positions>
-    </convention>
-    <convention>
-        <label>Climat &amp; Nature</label>
+        <label>Climat et Nature</label>
         <detail>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed sed risus porro quisquam est qui pretium quam vulputate dignissim suspendisse in. Tincidunt nunc pulvinar sapien et. Vel turpis nunc eget lorem dolor sed.</detail>
         <scheduled>2018-08-12</scheduled>
         <place>Bordeaux</place>
@@ -25,19 +13,7 @@
         </positions>
     </convention>
     <convention>
-        <label>Solidarité &amp; Générosité</label>
-        <detail>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus purus in massa tempor nec feugiat nisl pretium fusce. Nunc eget lorem dolor sed viverra. Vitae congue mauris rhoncus aenean vel elit scelerisque mauris.</detail>
-        <scheduled>2018-10-21</scheduled>
-        <place>Talence</place>
-        <image>example-event03.jpg</image>
-        <positions>
-            <position>Responsable Sureté et Sécurité</position>
-            <position>Organisateur / Organisatrice d'Événements</position>
-            <position>Responsable Sureté et Sécurité</position>
-        </positions>
-    </convention>
-    <convention>
-        <label>Zénitude &amp; Méditation</label>
+        <label>Zénitude et Méditation</label>
         <detail>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ornare quam viverra orci sagittis eu volutpat odio facilisis mauris. Vitae et leo duis ut diam quam nulla. Consequat mauris nunc congue nisi vitae suscipit tellus mauris.</detail>
         <scheduled>2018-12-08</scheduled>
         <place>Pessac</place>
@@ -50,7 +26,7 @@
         </positions>
     </convention>
     <convention>
-        <label>Vancances &amp; Voyages</label>
+        <label>Vancances et Voyages</label>
         <detail>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Laoreet non curabitur gravida arcu. Quis enim lobortis scelerisque fermentum dui faucibus in. Aliquam etiam erat velit scelerisque in dictum non consectetur.</detail>
         <scheduled>2019-01-30</scheduled>
         <place>Mérignac</place>
@@ -62,7 +38,7 @@
         </positions>
     </convention>
     <convention>
-        <label>Emploi &amp; Education</label>
+        <label>Emploi et Education</label>
         <detail>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dapibus ultrices in iaculis nunc aliquip commodo consequat sed augue lacus viverra. Lacus vestibulum sed arcu non odio euismod. Sit amet tellus cras adipiscing enim eu.</detail>
         <scheduled>2018-03-26</scheduled>
         <place>Bègles</place>
@@ -75,7 +51,7 @@
         </positions>
     </convention>
     <convention>
-        <label>Intérieur &amp; Design</label>
+        <label>Intérieur et Design</label>
         <detail>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod sapien nec sagittis aliquam tempor incididunt ut labore et dolore magna aliqua. Ut aliquam purus sit amet luctus venenatis. Tempor id eu nisl nunc mi ipsum faucibus vitae aliquet. Dolor sed viverra ipsum nunc aliquet bibendum enim facilisis.</detail>
         <scheduled>2018-05-19</scheduled>
         <place>Bègles</place>
@@ -87,7 +63,7 @@
         </positions>
     </convention>
     <convention>
-        <label>Technologie &amp; Finance</label>
+        <label>Technologie et Finance</label>
         <detail>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Cursus vitae congue mauris rhoncus aenean vel elit scelerisque. Ornare aenean euismod elementum nisi quis eleifend quam. Sociis natoque penatibus et magnis dis parturient montes nascetur.</detail>
         <scheduled>2018-07-08</scheduled>
         <place>Bègles</place>
@@ -96,6 +72,59 @@
             <position>Organisateur / Organisatrice d'Événements</position>
             <position>Àgent d'Accompagnement P.M.R.</position>
             <position>Agent Commercial Indépendant</position>
+        </positions>
+    </convention>
+    <convention>
+        <label></label>
+        <detail></detail>
+        <scheduled></scheduled>
+        <place></place>
+        <image>example-event08.jpg</image>
+    </convention>
+    <convention>
+        <label>fsdsdf</label>
+        <detail>fsdfsdf</detail>
+        <scheduled>2018-06-02</scheduled>
+        <place>fdsfds</place>
+        <image>example-event08.jpg</image>
+        <positions>
+            <position>fsdf</position>
+            <position>fsdfsd</position>
+            <position>sdfdsfsd</position>
+            <position>fsdfsd</position>
+        </positions>
+    </convention>
+    <convention>
+        <label>dsfsdf</label>
+        <detail>fsdfsdfsdf</detail>
+        <scheduled>2018-06-02</scheduled>
+        <place>dfsdf</place>
+        <image>example-event08.jpg</image>
+        <positions>
+            <position>fsdf</position>
+            <position>fds</position>
+            <position>dsfsdf</position>
+            <position>sdfdsfsdf</position>
+        </positions>
+    </convention>
+    <convention>
+        <label>fzef</label>
+        <detail>efze</detail>
+        <scheduled>2018-06-02</scheduled>
+        <place>fzef</place>
+        <image>example-event08.jpg</image>
+        <positions>
+            <position>zefze</position>
+        </positions>
+    </convention>
+    <convention>
+        <label>DD</label>
+        <detail>DSsd</detail>
+        <scheduled>2018-06-06</scheduled>
+        <place>SQDsqd</place>
+        <image>example-event08.jpg</image>
+        <positions>
+            <position>QSDQSD</position>
         </positions>
     </convention>
 </conventions>

@@ -10,11 +10,16 @@ import java.io.File;
 
 public class JParse {
 
-    public static <T> void marshal(T object, File file) throws JAXBException {
+    public static <T> void marshal(T object, File file, String schemaLocation) throws JAXBException {
+
+        schemaLocation = schemaLocation.substring(schemaLocation.lastIndexOf('/')+1, schemaLocation.length() );
+        schemaLocation = schemaLocation.substring(0, schemaLocation.lastIndexOf('.')) + ".xsd";
+
         JAXBContext context = JAXBContext.newInstance(object.getClass());
         Marshaller marshaller = context.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        marshaller.setProperty(Marshaller.JAXB_NO_NAMESPACE_SCHEMA_LOCATION, schemaLocation);
         marshaller.marshal(object, file);
     }
 

@@ -24,7 +24,6 @@ public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        LOGGER.log(Level.INFO, "Executed");
         HttpSession session = request.getSession();
         session.invalidate();
         getServletContext().getRequestDispatcher(PAGE).forward(request, response);

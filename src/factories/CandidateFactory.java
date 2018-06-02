@@ -14,5 +14,5 @@ public interface CandidateFactory {
     //**
     void update(Candidate candidate);
     //**
-    void delete(Candidate candidate);
+    void delete(String email);
 }

@@ -18,10 +18,7 @@ public class ConventionFactoryImpl implements ConventionFactory {
 
     @Override
     public List<Convention> getAll() {
-        try { Conventions conventions = JParse.unmarshal(Conventions.class, FILE);
-            return conventions.getConvention();
-        } catch (JAXBException e) { e.printStackTrace(); }
-        return null;
+        return getConventions().getConvention();
     }
 
     @Override
@@ -36,12 +33,9 @@ public class ConventionFactoryImpl implements ConventionFactory {
 
     @Override
     public void create(Convention convention) {
-        try { List<Convention> conventions = getAll();
-            conventions.add(convention);
-            JParse.marshal(conventions, FILE);
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
+        Conventions conventions = getConventions();
+        conventions.getConvention().add(convention);
+        setConventions(conventions);
     }
 
     @Override
@@ -50,22 +44,20 @@ public class ConventionFactoryImpl implements ConventionFactory {
     }
 
     @Override
-    public void delete(Convention convention) {
-        try { List<Convention> conventions = getAll();
-            conventions.remove(convention);
-            JParse.marshal(conventions, FILE);
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
+    public void delete(String label) {
+        Conventions conventions = getConventions();
+        conventions.getConvention().remove(getOne(label));
+        setConventions(conventions);
     }
 
-    @Override
-    public void delete(String label) {
-        try { List<Convention> conventions = getAll();
-            conventions.remove(getOne(label));
-            JParse.marshal(conventions, FILE);
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
+    private Conventions getConventions() {
+        try { return JParse.unmarshal(Conventions.class, FILE);
+        } catch (JAXBException e) { e.printStackTrace(); }
+        return null;
+    }
+
+    private void setConventions(Conventions conventions) {
+        try { JParse.marshal(conventions, FILE, FILE.getPath());
+        } catch (JAXBException e) { e.printStackTrace(); }
     }
 }

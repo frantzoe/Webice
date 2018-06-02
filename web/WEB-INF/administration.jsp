@@ -7,6 +7,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<jsp:useBean id="conventions" scope="request" type="java.util.ArrayList"/>
+<jsp:useBean id="candidacies" scope="request" type="java.util.List"/>
+<jsp:useBean id="tab" scope="request" type="java.lang.Integer" />
+
 <% int candCount = 0; %>
 <% int convCount = 0; %>
 <!DOCTYPE html>
@@ -41,41 +46,46 @@
                 <div class="mdl-layout--large-screen-only mdl-layout__header-row">
                 </div>
                 <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-                    <h3>${sessionScope.recruiterSession.forename} ${sessionScope.recruiterSession.surname}</h3>
+                    <h3>${sessionScope.recruiterSession.fullname}</h3>
                 </div>
-                <!--div class="mdl-layout--large-screen-only mdl-layout__header-row">
-                    <h8>${sessionScope.recruiterSession.email}</h8>
-                </div-->
                 <div class="mdl-layout--large-screen-only mdl-layout__header-row">
                 </div>
                 <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-                    <a href="#candidacies" class="mdl-layout__tab is-active">Candidatures</a>
-                    <!--a href="#dashboard" class="mdl-layout__tab is-inactive">Dashboard</a-->
-                    <a href="#conventions" class="mdl-layout__tab">Événements</a>
-                    <!--a href="#features" class="mdl-layout__tab">Details</a-->
-                    <!--button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add">
-                        <i class="material-icons" role="presentation">add</i>
-                        <span class="visuallyhidden">Add</span>
-                    </button-->
+                    <c:choose>
+                        <c:when test="${tab == 0}">
+                            <a href="#candidacies" class="mdl-layout__tab is-active">Candidatures</a>
+                            <a href="#conventions" class="mdl-layout__tab">Événements</a>
+                        </c:when>
+                        <c:when test="${tab == 1}">
+                            <a href="#candidacies" class="mdl-layout__tab">Candidatures</a>
+                            <a href="#conventions" class="mdl-layout__tab is-active">Événements</a>
+                        </c:when>
+                    </c:choose>
                 </div>
             </header>
             <main class="mdl-layout__content">
-                <div class="mdl-layout__tab-panel is-active" id="candidacies">
-                    <jsp:useBean id="candidacies" scope="request" type="java.util.List"/>
+                <c:choose>
+                    <c:when test="${tab == 0}">
+                        <div class="mdl-layout__tab-panel is-active" id="candidacies">
+                    </c:when>
+                    <c:when test="${tab == 1}">
+                        <div class="mdl-layout__tab-panel is-inactive" id="candidacies">
+                    </c:when>
+                </c:choose>
                     <c:forEach var="candidacy" items="${candidacies}">
                         <c:if test="${not candidacy.validated}">
                             <%candCount += 1;%>
                             <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
                                 <div class="mdl-card mdl-cell mdl-cell--12-col">
                                     <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
-                                        <h4 class="mdl-cell mdl-cell--12-col">${candidacy.candidate.forename} ${candidacy.candidate.surname} / ${candidacy.convention.label}</h4>
+                                        <h4 class="mdl-cell mdl-cell--12-col">${candidacy.candidate.fullname} / ${candidacy.convention.label}</h4>
                                         <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
                                             <div class="section__circle-container__circle mdl-color--primary">
                                                 <i class="material-icons mdl-color-text--white">face</i>
                                             </div>
                                         </div>
                                         <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                                            <h5>${candidacy.candidate.forename} ${candidacy.candidate.surname}</h5>
+                                            <h5>${candidacy.candidate.fullname}</h5>
                                             Motivations : ${candidacy.motivation}<br>Personalité : ${candidacy.candidate.personality}
                                         </div>
                                         <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
@@ -89,19 +99,23 @@
                                         </div>
                                     </div>
                                     <div class="mdl-card__actions">
-                                        <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--accent" href="#" id="valCan1<% out.print(candCount); %>">
-                                            <i class="material-icons ">check_circle</i>
+                                        <a href="validatecandidacy?email=${candidacy.candidate.fullname}&label=${candidacy.convention.label}&choice=${candidacy.choiceOne}">
+                                            <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--accent" id="valCan1<% out.print(candCount); %>">
+                                                <i class="material-icons">check_circle</i>
                                                 ${candidacy.choiceOne}
-                                        </button>
+                                            </button>
+                                        </a>
                                         <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--top" data-mdl-for="valCan1<% out.print(candCount); %>">Valider la Candidature pour le poste de ${candidacy.choiceOne}</div>
-                                        <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--accent" href="#" id="valCan2<% out.print(candCount); %>">
-                                            <i class="material-icons ">check_circle</i>
+                                        <a href="validatecandidacy?email=${candidacy.candidate.email}&label=${candidacy.convention.label}&choice=${candidacy.choiceTwo}">
+                                            <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--accent" id="valCan2<% out.print(candCount); %>">
+                                                <i class="material-icons">check_circle</i>
                                                 ${candidacy.choiceTwo}
-                                        </button>
+                                            </button>
+                                        </a>
                                         <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--top" data-mdl-for="valCan2<% out.print(candCount); %>">Valider la Candidature pour le poste de ${candidacy.choiceTwo}</div>
                                     </div>
                                 </div>
-                                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="delCan<% out.print(candCount); %>" onclick="candidacyDialog('${candidacy.candidate.forename} ${candidacy.candidate.surname}','${candidacy.convention.label}')">
+                                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="delCan<% out.print(candCount); %>" onclick="candidacyDialog('${candidacy.candidate.email}','${candidacy.candidate.fullname} ${candidacy.candidate.surname}','${candidacy.convention.label}')">
                                     <i class="material-icons">delete</i>
                                 </button>
                                 <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" data-mdl-for="delCan<% out.print(candCount); %>">Supprimer Candidature</div>
@@ -110,55 +124,58 @@
                     </c:forEach>
                     <section class="section--footer mdl-color--white mdl-grid"></section>
                 </div>
-                <div class="mdl-layout__tab-panel is-inactive" id="conventions">
-                    <!--button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add">
-                        <i class="material-icons" role="presentation">add</i>
-                        <span class="visuallyhidden">Add</span>
-                    </button>
-                    <div class="mdl-tooltip" data-mdl-for="add">Ajouter un nouvel Événement</div-->
+                <c:choose>
+                    <c:when test="${tab == 0}">
+                            <div class="mdl-layout__tab-panel is-inactive" id="conventions">
+                    </c:when>
+                    <c:when test="${tab == 1}">
+                            <div class="mdl-layout__tab-panel is-active" id="conventions">
+                    </c:when>
+                </c:choose>
                     <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
                         <div class="mdl-tabs__tab-bar">
                             <a href="#see-panel" class="mdl-tabs__tab is-active">Consulter</a>
                             <a href="#add-panel" class="mdl-tabs__tab">Ajouter</a>
                         </div>
                         <div class="mdl-tabs__panel is-active" id="see-panel">
-                            <jsp:useBean id="conventions" scope="request" type="java.util.ArrayList"/>
                             <c:forEach var="convention" items="${conventions}">
-                                <%convCount += 1;%>
-                                <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-                                    <div class="mdl-card mdl-cell mdl-cell--12-col">
-                                        <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
-                                            <h4 class="mdl-cell mdl-cell--12-col">${convention.label}</h4>
-                                            <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                                                <div class="section__circle-container__circle mdl-color--primary">
-                                                    <i class="material-icons mdl-color-text--white">event</i>
+                                <c:if test="${convention.active}">
+                                    <%convCount += 1;%>
+                                    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+                                        <div class="mdl-card mdl-cell mdl-cell--12-col">
+                                            <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+                                                <h4 class="mdl-cell mdl-cell--12-col">${convention.label}</h4>
+                                                <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                                                    <div class="section__circle-container__circle mdl-color--primary">
+                                                        <i class="material-icons mdl-color-text--white">event</i>
+                                                    </div>
+                                                </div>
+                                                <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                                                    <h5>${convention.label}</h5>
+                                                    Détails : ${convention.detail}
                                                 </div>
                                             </div>
-                                            <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                                                <h5>${convention.label}</h5>
-                                                Détails : ${convention.detail}
+                                            <div class="mdl-card__actions mdl-card--border">
+                                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--accent">
+                                                    <i class="material-icons ">schedule</i>
+                                                        ${convention.scheduled} à ${convention.place}
+                                                </a>
                                             </div>
                                         </div>
-                                        <div class="mdl-card__actions mdl-card--border">
-                                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--accent">
-                                                <i class="material-icons ">schedule</i>
-                                                    ${convention.scheduled} à ${convention.place}
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="delCon<% out.print(convCount); %>" name="delCon<% out.print(convCount); %>" onclick="conventionDialog('${convention.label}')">
-                                        <i class="material-icons">delete</i>
-                                    </button>
-                                    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" data-mdl-for="delCon<% out.print(convCount); %>">Supprimer Événement</div>
-                                </section>
+                                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="delCon<% out.print(convCount); %>" name="delCon<% out.print(convCount); %>" onclick="conventionDialog('${convention.label}')">
+                                            <i class="material-icons">delete</i>
+                                        </button>
+                                        <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--left" data-mdl-for="delCon<% out.print(convCount); %>">Supprimer Événement</div>
+                                    </section>
+                                </c:if>
                             </c:forEach>
                             <section class="section--footer mdl-color--white mdl-grid"></section>
                         </div>
                         <div class="mdl-tabs__panel" id="add-panel">
                             <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
                                 <div class="mdl-card mdl-cell mdl-cell--12-col">
-                                    <div class="mdl-card__supporting-text">
-                                        <form id="creForm" method="post" action="registration">
+                                    <div class="mdl-card__supporting-text" style="align-content: center">
+                                        <form id="creForm" method="post" action="createconvention">
                                             <fieldset>
                                                 <h3>Nouvel Evenement</h3>
                                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -167,8 +184,8 @@
                                                     <span class="mdl-textfield__error">FieldError</span>
                                                 </div>
                                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                                    <textarea class="mdl-textfield__input" id="description" name="description" rows="5" type="text"></textarea>
-                                                    <label class="mdl-textfield__label" for="description">Description</label>
+                                                    <textarea class="mdl-textfield__input" id="detail" name="detail" rows="5" type="text"></textarea>
+                                                    <label class="mdl-textfield__label" for="detail">Description</label>
                                                     <span class="mdl-textfield__error">FieldError</span>
                                                 </div>
                                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -202,6 +219,13 @@
                                                     <span class="mdl-textfield__error">FieldError</span>
                                                 </div>
                                             </fieldset>
+                                            <div style="overflow:auto;">
+                                                <div style="float: right;">
+                                                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="nextBtn" type="submit">
+                                                        Valider
+                                                    </button>
+                                                </div>
+                                        </div>
                                         </form>
                                     </div>
                                 </div>
@@ -223,29 +247,19 @@
         <dialog class="mdl-dialog" id="dialog_convention">
             <h4 class="mdl-dialog__title">Suppression</h4>
             <div class="mdl-dialog__content" id="dialog_convention_content">
-                <!--p>
-                    This is an example of the MDL Dialog being used as a modal.
-                    It is using the full width action design intended for use with buttons
-                    that do not fit within the specified <a href="https://www.google.com/design/spec/components/dialogs.html#dialogs-specs">length metrics</a>.
-                </p-->
             </div>
             <div class="mdl-dialog__actions">
                 <button class="mdl-button" id="dialog_convention_close" type="button">Non</button>
-                <button class="mdl-button"  id="dialog_convention_submit" type="button" value="">Oui</button>
+                <button class="mdl-button" id="dialog_convention_submit" type="button" value="">Oui</button>
             </div>
         </dialog>
         <dialog class="mdl-dialog" id="dialog_candidacy">
             <h4 class="mdl-dialog__title">Suppression</h4>
             <div class="mdl-dialog__content" id="dialog_candidacy_content">
-                <!--p>
-                    This is an example of the MDL Dialog being used as a modal.
-                    It is using the full width action design intended for use with buttons
-                    that do not fit within the specified <a href="https://www.google.com/design/spec/components/dialogs.html#dialogs-specs">length metrics</a>.
-                </p-->
             </div>
             <div class="mdl-dialog__actions">
                 <button class="mdl-button" id="dialog_candidacy_close" type="button">Non</button>
-                <button class="mdl-button"  id="dialog_candidacy_submit" type="button" value="">Oui</button>
+                <button class="mdl-button" id="dialog_candidacy_submit" type="button" value="">Oui</button>
             </div>
         </dialog>
         <a id="bottom-right-button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast" href="logout">Déconnexion</a>
