@@ -64,7 +64,7 @@ We use [Git](http://semver.org/) for version control.
 * **Tsilavo Ratrimo** - [GitHub Profile](https://github.com/TsilavoR)
 * **Jean-Baptiste Jeannot** - [GitHub Profile](https://github.com/Drdre33)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/frantzoe/Webice/graphs/contributors) who participated in this project.
 
 ## License
 
